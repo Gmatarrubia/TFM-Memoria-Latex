@@ -1,0 +1,76 @@
+{
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.blg": true,
+        "**/*.fls": true,
+        "**/*.log": true,
+        "**/*.lot": true,
+        "**/*.out": true,
+        "**/*.gz": true,
+        "**/*.lof": true,
+        "**/*.fdb_latexmk": true,
+    },
+    "editor.rulers": [
+        85,
+    ],
+    "latex-workshop.latex.recipes":[
+        {
+            "name": "Complete recipe",
+            "tools": [
+                "pdflatex",
+                "makeglossaries",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+    ],
+    "latex-workshop.latex.tools":[
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": [
+              "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+              "%DOCFILE%"
+            ]
+        },
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+}

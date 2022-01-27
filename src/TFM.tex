@@ -1,0 +1,169 @@
+% Plantilla realizada por Gonzalo Matarrubia. Basada en la plantilla creada por
+% Alberto Brunete (UPM) que, a su vez está basada en la de Santiago Morante Cendrero (UC3M)
+
+%parametros de tipo libro
+\documentclass[10pt,a4paper]{book}
+
+%idioma español y acentos
+\usepackage[spanish, es-tabla]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{spanish}
+
+%algunos símbolos matemáticos y paquete para usar subimágenes
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{appendix}
+\usepackage{eurosym}
+\usepackage{fancyhdr}
+\usepackage{float}
+%\usepackage{natbib}
+%Márgenes
+\usepackage[left=3cm,top=3cm,right=3cm,bottom=3cm]{geometry}
+
+%
+\usepackage{multicol}
+
+%para generar Índice con hipervínculos
+\usepackage{hyperref}
+\usepackage[style=index , nonumberlist, toc]{glossaries}
+
+%Algunas variables recurentes
+\def\TFM{Entorno de desarrollo y testing para una aplicacion Flutter en un sistema embebido
+ basado en Yocto proyect}
+\def\ME{Gonzalo Matarrubia González}
+\def\TUTOR{Borja Bordel Sánchez}
+\def\MASTERNAME{Máster Universitario en Software de Sistemas Distribuidos y Empotrados}
+\def\DATE{Junio 2022}
+
+%parametros del documento (sus propiedades)
+\hypersetup{
+    pdftitle={Entorno de desarrollo y testing para una aplicacion Flutter en un sistema embebido basado en Yocto proyect - TFM - 2022},
+    pdfsubject={TFM - 2022},
+    pdfauthor={Gonzalo Matarrubia González},
+    pdfkeywords={Yocto} {Yocto Project} {Qemu} {Raspberry pi} {Flutter} {embedded} {development enviroment},
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue,
+}
+
+% Estableciendo estilos para el código C/C++, Consola y Python
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\lstset{ frame=Ltb,
+	framerule=0pt,
+	aboveskip=0.5cm,
+	framextopmargin=3pt,
+	framexbottommargin=3pt,
+	framexleftmargin=0.4cm,
+	framesep=0pt,
+	rulesep=.4pt,
+	backgroundcolor=\color{gray97},
+	rulesepcolor=\color{black},
+	%
+	stringstyle=\ttfamily,
+	showstringspaces = false,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{gray45},
+	keywordstyle=\bfseries,
+	%
+	numbers=left,
+	numbersep=15pt,
+	numberstyle=\tiny,
+	numberfirstline = false,
+	breaklines=true,
+}
+\lstnewenvironment{listing}[1][]
+{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstdefinestyle{consola}
+{basicstyle=\scriptsize\bf\ttfamily,
+	backgroundcolor=\color{gray75},
+}
+
+\lstdefinestyle{C}
+{language=C,
+}
+\lstdefinestyle{Flutter}
+{language=Flutter,
+}
+
+%Definimos el segundo nivel de listas como guiones
+\renewcommand{\labelitemii}{-}
+%Definimos estilo de página para el documento
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+%\rhead{\thesection }
+\cfoot{\thepage}
+
+%Glosario
+%Índice de términos y abreviaturas
+\makeglossaries % create makeindex files
+\include{glossary/glossary}
+
+%empieza el documento
+\begin{document}
+%elementos antes del trabajo en sé se meten dentro de frontmatter
+\frontmatter
+
+%cada incluye referencia a un archivo de tipo .tex
+\include{chapters/portada}
+\include{chapters/firmas}
+%Licencia opcional
+\include{chapters/licencia}
+\include{chapters/evaluacion}
+\include{chapters/agradecimientos}
+\include{chapters/resumen}
+
+%genera índice
+\tableofcontents
+
+%Índice de figs.
+\listoffigures
+
+%Índice de tablas.
+\listoftables
+
+%Glosario
+\printglossaries % input files created by makeindex
+
+%empieza la parte descriptiva del trabajo
+\mainmatter
+\include{chapters/introduccion}
+\include{chapters/estadoarte}
+\include{chapters/EscenarioTrabajo}
+\include{chapters/ManualDeInstalacion}
+\include{chapters/GuiaDeUso}
+\include{chapters/AplicacionMeteorologica}
+\include{chapters/DesarrolloDeLaAplicacion}
+\include{chapters/CICD}
+%\include{chapters/ejemplos}
+
+%partes finales del trabajo: conclusiones, bibliografia y anexos
+\include{chapters/resultados}
+\include{chapters/gestion}
+\include{chapters/conclusion}
+\backmatter
+%genera doble hoja en blanco
+\cleardoublepage
+
+%estilo de bibliografía: plana, alfa...
+\bibliographystyle{apalike}
+%apartado de bibliografía
+\addcontentsline{toc}{chapter}{Bibliografía}
+%se incluye la bibliografía. Archivo de tipo .bib (bibtex)
+\bibliography{bib/bibliografia}
+
+%fin del documento
+\end{document}

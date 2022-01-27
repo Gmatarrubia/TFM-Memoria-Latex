@@ -21,8 +21,6 @@
 *.out
 *.synctex.gz
 *.toc
-
+ 
 # eventually
-TFM.pdf
-*.fls
-*.fdb_latexmk
+# myfile.pdf

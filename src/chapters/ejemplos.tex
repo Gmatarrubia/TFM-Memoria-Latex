@@ -1,0 +1,88 @@
+\chapter{Cmo escribir en Latex}
+
+\section{Citas}
+
+%las referencias a artculos se ponen con \cite,
+%las referencias a imgenes \ref,
+%las referencias a glosario \gls,
+%y las referencias a ecuaciones \eqref
+
+Esto es un ejemplo de cita de un artculo \cite{Brunete:2013}.
+
+
+\section{Listas}
+
+%itemize es una lista. Cada trmino lleva delante un \item
+Ejemplo de lista de puntos:
+\begin{itemize}
+\item Ejemplo1.
+\item Ejemplo2.
+\end{itemize}
+
+Y lista numerada:
+\begin{enumerate}
+\item Elemento 1
+\item Elemento 2
+\end{enumerate}
+
+\section{Tablas}
+
+Ejemplo de tabla. Como se aprecia en la tabla \ref{tab:table_example}...
+\begin{table}[tb]
+\caption{Ejemplo de tabla}
+\label{tab:table_example}
+\begin{center}
+\begin{tabular}{|c||c|c|}
+\hline
+One & Two & Three\\
+\hline
+F1A & F1B & F1C\\
+F2A & F2B & F2C\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Referencia a una seccin}
+\label{sec:refsec}
+
+Ejemplo de referencia a la seccin \ref{sec:refsec}
+
+\section{Texto}
+
+Testo en \textbf{negrita} y \textit{cursiva}.
+
+\section{Figuras}
+
+Ejemplo de referencia a figura (figura \ref{fig:logo_upm}). Es importante que todas las figs que aparezcan estn referenciadas, as como las tablas. En general las figuras se colocarn al principio o al final de cada pgina ([tb] en latex), a no ser que por alguna necesidad se deban colocar en una posicin exacta ([h]).
+
+%caption es el pie de foto, y label es el nombre que se da a la imagen para referenciarla despus. label no puede llevar acentos y no se muestra de cara al documento final (es slo interno).
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.45\textwidth]{figs/Logo_UPM.jpg}
+\caption{Logotipo de la UPM}
+\label{fig:logo_upm}
+\end{figure}
+
+% Ejemplo código consola
+\begin{lstlisting}[style=consola, numbers=left]
+    #!/bin/bash
+
+    #Genera las clases para el Cliente_py y el Servidor_rbpi
+
+    protoc -I=. --python_out=../Cliente_py mensaje.proto
+    protoc -I=. --cpp_out=../Servidor_rbpi mensaje.proto
+
+    echo "Se han generado los archivos mensaje.pb.h y mensaje.pb.cc"
+\end{lstlisting}
+
+% Ejemplo código en C
+\begin{lstlisting}[style=C, numbers=none]
+    cmake_minimum_required(VERSION 3.6)
+    project(Servidor_rbpi)
+
+    set(SOURCE_FILES main.cpp vlc_object.cpp conn_zmq.cpp mensaje.pb.cc gestorMP.cpp latidos_zmq.cpp lst_medias.cpp setIP.h zmqvideo.cpp)
+    set(HEADER_FILES conn_zmq.h vlc_object.h mensaje.pb.h gestorMP.h latidos_zmq.h lst_medias.h rpiGPIO.h setIP.h zmqvideo.h)
+    add_executable(Servidor_rbpi ${SOURCE_FILES})
+    target_link_libraries(Servidor_rbpi ${LIBVLC_LIBRARY} ${ZMQ_LIBRARY} ${PROTOBUF_LIBRARY}
+\end{lstlisting}
