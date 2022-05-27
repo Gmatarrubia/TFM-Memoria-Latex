@@ -1,8 +1,15 @@
 \chapter{Aplicación Meteorológica.}\label{sec:AplicacionMeteorologica}
 
-\paragraph{}En este capítulo se va a exponer todos la documentación técnica del diseño
+\paragraph{}En este capítulo se va a exponer toda la documentación técnica del diseño
 y la arquitectura del software de la aplicación que usaremos de ejemplo para utilizar
 el entorno de desarrollo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/app1}
+	\caption[Portada de la app]{Fotografía de la aplicación en ejecución.}
+	\label{img:rpi-weather-portada}
+\end{figure}
 
 \section{Requisitos}
 
@@ -152,6 +159,23 @@ la lectura y comprensión, sin embargo, representa fielmente la implementación.
 	\caption[Patron Provider]{Diagrama de clases con patrón provider.}
 	\label{fig:classDiagram}
 \end{figure}
+
+\paragraph{}Como ya se ha dicho con anterioridad, esta aplicación se diseño para servir
+de ejemplo o demostrador del entorno de desarrollo. El uso de aplicaciones flutter en
+entornos embebidos y basado en Yocto no está muy extendido. No obstante, esto es sobre
+todo debido a la falta de documentación, ya que queda demostrado cuan práctico y
+conveniente puede llegar a ser.
+
+\paragraph{}Al ser un demostrador,se ha querido documentar como si de una plantilla o
+\emph{template} se tratase. También se han desarrollado unos cuantos test, para la
+demostración del entorno de testing. Vale la pena recordar, que la aplicación en sí
+misma es independiente del entorno de desarrollo y del proyecto Yocto que la usa.
+
+\paragraph{}Todo el código de la aplicación y la presentación básica en inglés puede
+encontrarse en el siguiente repositorio de código público:
+
+\paragraph{}\href{https://github.com/Gmatarrubia/rpi_weather}{github.com/Gmatarrubia/rpi weather}
+
 
 %las referencias a artculos se ponen con \cite,
 %las referencias a imgenes \ref,

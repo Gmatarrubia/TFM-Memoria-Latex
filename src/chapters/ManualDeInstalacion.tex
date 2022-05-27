@@ -7,18 +7,70 @@ seguir con independencia del estado previo del sistema. No se asume ningún esta
 \section{Consideraciones previas}
 
 \paragraph{}El sistema operativo y sus principales tecnologías y herramientas tienen
-como base su uso en sistemas operativos GNU/Linux. Por lo que, a pesar de poder ser
-utilizados en cualquier sistema, serán en éstos donde se más fácil y óptimo su uso.
+como base su uso en sistemas operativos GNU/Linux, concretamente la versión 20.04 de
+la distribución de Ubuntu. Por lo que, a pesar de poder ser utilizados en cualquier
+sistema, serán en éstos donde será más fácil y óptimo su uso.
 
-\section{Instalación en sistemas operativos GNU/Linux}
+\paragraph{} Al igual que sucede en otros capítulos de este documento, se van a diferenciar
+ las dos partes lógicas que componen el proyecto software.
+
+\section{Instalación del entorno Flutter}
+
+\paragraph{}En el entorno Flutter vamos a ser capaces de desarrollar la aplicación,
+pasar sus test y compilarla para diferentes plataformas.
+
+\subsection{Instalación en sistemas operativos GNU/Linux}
+
+\paragraph{}Para la instalación de este entorno en un sistema operativo basado en
+la versión de Ubuntu 20.04 se podrá optar por 2 estrategias: correr el entorno de
+forma nativa o utilizar el método basado en docker.
+
+\paragraph{Manera nativa:}
+\begin{enumerate}
+    \item Instalar la herramienta \gls{git} de control de versiones.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo apt install git
+    \end{lstlisting}
+
+    \item Clonar el repositorio desde github
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
+    \end{lstlisting}
+
+    \item Ejecutar el script de instalación de paquetes. Este paso solamente es necesario
+    ejecutarlo una vez.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ ./installDevEnv.sh
+    \end{lstlisting}
+
+    \item Ejecutar de opbtención de dependencias. Este script solamente será necesario
+    ejecutarlo una vez, a no se que se hayan borrado las dependencias.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ ./getSources.sh
+    \end{lstlisting}
+
+\end{enumerate}
+
+
+\subsection{Instalación en sistemas operativos Windows}
 
 \paragraph{}Blabla
 
-\section{Instalación en sistemas operativos Windows}
+\subsection{Instalación en sistemas operativos MacOS}
 
 \paragraph{}Blabla
 
-\section{Instalación en sistemas operativos MacOS}
+\section{Instalación del entorno Yocto}
+
+\subsection{Instalación en sistemas operativos GNU/Linux}
+
+\paragraph{}Blabla
+
+\subsection{Instalación en sistemas operativos Windows}
+
+\paragraph{}Blabla
+
+\subsection{Instalación en sistemas operativos MacOS}
 
 \paragraph{}Blabla
 
