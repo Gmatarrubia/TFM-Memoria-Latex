@@ -57,11 +57,11 @@ Testo en \textbf{negrita} y \textit{cursiva}.
 Ejemplo de referencia a figura (figura \ref{fig:logo_upm}). Es importante que todas las figs que aparezcan estn referenciadas, as como las tablas. En general las figuras se colocarn al principio o al final de cada pgina ([tb] en latex), a no ser que por alguna necesidad se deban colocar en una posicin exacta ([h]).
 
 %caption es el pie de foto, y label es el nombre que se da a la imagen para referenciarla despus. label no puede llevar acentos y no se muestra de cara al documento final (es slo interno).
-\begin{figure}[tb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{figs/Logo_UPM.jpg}
-\caption{Logotipo de la UPM}
-\label{fig:logo_upm}
+\caption[Diagrama SysML de casos de uso]{Diagrama SysML de casos de uso.}
+\label{fig:use_cases}
 \end{figure}
 
 % Ejemplo código consola

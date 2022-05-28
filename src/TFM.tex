@@ -55,13 +55,12 @@
 }
 
 % Estableciendo estilos para el código C/C++, Consola y Python
-\usepackage{color}
-\definecolor{gray97}{gray}{.97}
-\definecolor{gray75}{gray}{.75}
-\definecolor{gray45}{gray}{.45}
-
 \usepackage{xcolor}
 \definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray91}{gray}{.91}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
@@ -71,7 +70,7 @@
 	aboveskip=0.5cm,
 	framextopmargin=3pt,
 	framexbottommargin=3pt,
-	framexleftmargin=0.4cm,
+	framexleftmargin=0.2cm,
 	framesep=0pt,
 	rulesep=.4pt,
 	backgroundcolor=\color{gray97},
@@ -94,20 +93,22 @@
 
 \lstdefinestyle{consola}
 {
-	basicstyle=\scriptsize\bf\ttfamily,
-	backgroundcolor=\color{gray75},
-	commentstyle=\color{codegreen},
+	basicstyle=\small\ttfamily,
+	backgroundcolor=\color{gray91},
+	commentstyle=\color{gray45},
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
-	language=Awk,
+	language=bash,
 }
 
 \lstdefinestyle{C}
-{language=C,
+{
+	language=C,
 }
 \lstdefinestyle{Flutter}
-{language=Flutter,
+{
+	language=Flutter,
 }
 
 %Definimos el segundo nivel de listas como guiones

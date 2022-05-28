@@ -26,8 +26,11 @@ la versión de Ubuntu 20.04 se podrá optar por 2 estrategias: correr el entorno
 forma nativa o utilizar el método basado en docker.
 
 \paragraph{Manera nativa:}
+
+\paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
+
 \begin{enumerate}
-    \item Instalar la herramienta \gls{git} de control de versiones.
+    \item Instalar la herramienta \textbf{\gls{git}} de control de versiones.
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt install git
     \end{lstlisting}
@@ -37,19 +40,63 @@ forma nativa o utilizar el método basado en docker.
         $ git clone https://github.com/Gmatarrubia/rpi_weather.git
     \end{lstlisting}
 
-    \item Ejecutar el script de instalación de paquetes. Este paso solamente es necesario
-    ejecutarlo una vez.
+    \item Ejecutar el script de instalación de paquetes.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ ./installDevEnv.sh
+        $ sudo ./installDevEnv.sh
     \end{lstlisting}
 
-    \item Ejecutar de opbtención de dependencias. Este script solamente será necesario
-    ejecutarlo una vez, a no se que se hayan borrado las dependencias.
+    \item Ejecutar el script de obtención de dependencias.
     \begin{lstlisting}[style=consola, numbers=left]
         $ ./getSources.sh
     \end{lstlisting}
 
+    \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
+    podemos utilizar la siguente opctión.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo su
+        $ source checkFunctions
+        $ check_vscode
+    \end{lstlisting}
+
+    \item Fin de la instalación.
 \end{enumerate}
+
+\paragraph{Entorno de desarrollo dockerizado:}
+
+\paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
+usuario.
+
+\begin{enumerate}
+    \item Instalar la herramienta \textbf{\gls{git}} de control de versiones.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo apt install git
+    \end{lstlisting}
+
+    \item Clonar el repositorio desde github
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
+    \end{lstlisting}
+
+    \item Comprobar que el usuario pertenezca al grupo de docker, y en caso que de
+    que no pertenezca al grupo, añadirlo.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG $(whoami) docker
+    \end{lstlisting}
+
+    \item Ejecutar el script de obtención de dependencias.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ ./getSources.sh
+    \end{lstlisting}
+
+    \item Fin de la instalación.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/vscode-ready}
+	\caption[Visual Studio Code]{Visual Studio Code con el proyecto abierto.}
+	\label{imgs:vscode-ready}
+\end{figure}
 
 
 \subsection{Instalación en sistemas operativos Windows}
