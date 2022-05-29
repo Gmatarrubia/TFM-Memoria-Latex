@@ -32,6 +32,40 @@ implementados en función de la naturaleza del proyecto, se la cantidad de cambi
 sufre el código, la metodología de desarrollo de la empresa, de la relación con el
 cliente, etc.
 
+\subsection{} Ciclo de vida del desarrollo software
+
+\paragraph{}Yocto admite tener tanto fuentes locales, como fuentes en servidores. Por
+eso mismo, para el desarrollo de la aplicación flutter se propone el uso de los
+siguiente patrones de branching, explicando sus fundamentos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\textwidth]{imgs/rpi-weather-recipe}
+    \caption[Detale recipe de Rpi Weahter]{Detalle de la recipe de Rpi Weather.}
+    \label{imgs:recipe-rpi-weather-1}
+\end{figure}
+
+\paragraph{}Como se puede apreciar en la imagen \ref{imgs:recipe-rpi-weather-1} cada
+vez que se haga un \gls{fetch} de Rpi Weather, va a descargar lo último que haya en la
+rama principal. Esto tiene unas consecuencias inmediatas. La rama principal debe contener
+en todo momento código funcional dispuesto a ser entregado y que pase todas las pruebas
+necesarias. En un entorno real, lo más conveniente sería fijar la referencia de una recipe,
+o bien a un \emph{tag} o \emph{commit} concretos o bien a una rama de release. Pero para
+nuestro ejemplo, vamos a considerar la rama \emph{main} como una rama de release.
+
+\paragraph{Patrón de always-ready main branch:} blabla
+
+\paragraph{Patrón de healthy branch:} blabla
+
+\paragraph{Patrón de feature branch:} blabla
+
+\paragraph{}Al no haber otro proyecto que depende del código del entorno Yocto, para
+esta parte podría haber una política de branching diferente, posiblemente más relajada.
+Pero al pertenecer ambos entornos, el de Flutter y el de Yocto a la misma compañia, se
+aplicará extamente la misma política de branching, así se homogenizan los procesos.
+
+\subsection{} Infraestructura
+
 \paragraph{}Normalmente, los sistemas de control de versiones están ``supervisados''
 por equipos de compilación, analizadores estáticos y dinámicos, despligue de artefactos,
 etc. Es decir, que existe una infraestructura que trabaja de forma automatizada con
@@ -41,7 +75,11 @@ física del \emph{hardware}, así como la responsabilidad de mantener el servici
 
 \paragraph{}Para asegurar la mantenibilidad de esta infraestructura, así como para aplicar
 las mismas técnicas de desarrollado que se hacen con el código se llevan a cabo descripciones
-de \glsplural{pipeline} en lo que se conoce como \gls{IaaC}.
+de \glsplural{pipeline} en lo que se conoce como \gls{IaaC}. De esta manera, el desarrllo
+del entorno de desarrollo y sus dependencias puede ser desarrollado y administrado a la
+vez y de igual manera que el propio código que contiene.
+
+
 
 \section{QA}
 
