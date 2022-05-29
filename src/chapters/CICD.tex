@@ -12,7 +12,36 @@ arquitectura de la infraestructura es pura expeculación y no será probada a ni
 
 \section{Control de versiones}
 
-\paragraph{}Blabla
+\paragraph{}El control de versiones en este entorno de desarrollo se realiza mediante
+\gls{git}. \Gls{git} es una herramienta de control de versiones gratuita, multiplataforma que
+es muy popular, tanto que incluso podría empezar a considerarse un estandar. Populares
+servicios de repositorios online, como \href{github.com}{github} o \href{gitlab.com}{gitlab}
+funcionan con este sistema. Para este proyecto, se ha elegido \href{github.com}{github}
+por su popularidad. Ya que al ser código abierto, esto facilita que más desarrolladores
+encuentren el proyecto e incluso quieran colaborar para hacer sus aportaciones.
+
+\paragraph{}En mi experiencia laboral, he utilizado \gls{git} en repositorios compartidos
+por más de mil desarrolladores y \gls{git} facilita la gestión del control de versión.
+Obviamente, en casos tan ``extremos'' como el mencionado, existen carencias que no
+resuelve la propia herramienta, y que han de ser solventados mediante la implantación
+de protocolos internos y patrones de branching.
+
+\paragraph{}Algunos de los patrones más utilizados son: patrón mainline branch, healthy
+branch, feature branch, release branch o production branch. Estos patrones deben ser
+implementados en función de la naturaleza del proyecto, se la cantidad de cambios que
+sufre el código, la metodología de desarrollo de la empresa, de la relación con el
+cliente, etc.
+
+\paragraph{}Normalmente, los sistemas de control de versiones están ``supervisados''
+por equipos de compilación, analizadores estáticos y dinámicos, despligue de artefactos,
+etc. Es decir, que existe una infraestructura que trabaja de forma automatizada con
+nuestro código y los cambios que le introducimos. Esta infraestructura puede estar
+en local, \gls{on premises} o en cloud. Lo único que cambia en cada caso es la hubicación
+física del \emph{hardware}, así como la responsabilidad de mantener el servicio.
+
+\paragraph{}Para asegurar la mantenibilidad de esta infraestructura, así como para aplicar
+las mismas técnicas de desarrollado que se hacen con el código se llevan a cabo descripciones
+de \glsplural{pipeline} en lo que se conoce como \gls{IaaC}.
 
 \section{QA}
 
