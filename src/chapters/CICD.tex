@@ -108,7 +108,7 @@ otro proyecto.
 \paragraph{}Los \glsplural{pipeline} sólo definen las acciones a realizar en la infraestructura
 en determinados eventos, pero la propia definición de la infraestructura también puede
 estar definida en código. En nuestro proyecto, los repositorios están pensados para
-integrarse en una infraestuctura \gls{IaaC} mediante Ansible\ref{sec:ansible}. En este
+integrarse en una infraestructura \gls{IaaC} mediante Ansible\ref{sec:ansible}. En este
 proyecto, por su alcance, se han definido unos \emph{playbooks} o unidades de configuración,
 implementación y aprovisionamiento reutilizables, en las que deben ser lanzados de forma
 local. De esta forma, no habría mucha diferencia con un script normal, más haya de la
@@ -120,7 +120,7 @@ los diferentes entornos, así como las máquinas donde se van a procesar los ent
 nuevos trabajadores que fueran a utilizar los diferentes entornos, aplicando de manera
 automática los \emph{playbooks} necesarios en cada caso. Incluso si se realizara un
 cambio de requisito y/o entorno, con Ansible podría administrarse todos los equipos,
-por lotes y de forma automática.
+por lotes y de forma automática y remota.
 
 \section{QA}
 
@@ -129,14 +129,37 @@ Como no hay muchas herramientas externas de yocto que permitan hacer un análisi
 avanzado del que hace el propio yocto al generarse, para ese entorno uno o varios nodos
 que tengan un servicio de generación centralizado sería suficiente. Incluso se podría
 tener un entorno de pre-producción y comprobar la integración hardware como parte del
-proceso de \emph{quality assurance}.
+proceso de \emph{quality assurance}. Los nodos de generación automática podrían utilizar
+Jenkins para esta tarea, o bien un alternativa sería utilizar los recursos de GitHub
+Actions. Quizás el factor más importante en este caso sería si esta parte de la
+infraestructura se quiere hacer el could o \gls{on-premises}. En ambos casos, se
+describiría la una \gls{pipeline} en un archivo específico en el propio repositorio de
+código.
 
-\paragraph{}Para el entorno Flutter es distinto blabla
+\paragraph{}El entorno Flutter admite más variaciones en cuanto a el uso de infraestructura
+para gestionar el \emph{quality assurance}. Puede haber nodos de compilación automática,
+pero también nodos de análisis de código y ejecución de test. Por ejemplo, se puede
+utilizar una instancia de Sonarqube, para obtener resultados acerca de la calidad y del
+código, abarcando desde el uso del \gls{coding standard} hasta la deteción de vulnerabilidades.
 
+\paragraph{}El QA siempre tiene una componente subjetiva y que difícilmente se puede
+automatizar, así además de medios, para garantizar una buena calidad se necesitan
+trabajadores cualificados para dicha tarea.
 
 \section{Entrega continua}
 
-\paragraph{}Blabla
+\paragraph{}Hay varias soluciones comerciales que se integran con Yocto para realizar
+la entrega continua, tanto para la actualización de la aplicación Flutter dentro del
+sistema como para realizar un \emph{full-upgrade} a todo el firmware. En el caso de
+querer realizar las actualizaciones \gls{OTA} solo para la aplicación flutter se tienen
+más alternativas, ya que podríamos modificar el sistema operativo para instalar cualquier
+servicio que aporte esta utilidad. En el caso de querer realizar un \emph{full-upgrade}
+es necesario contar con determinadas características del hardware.
+
+\paragraph{}Las estategias más frecuentes para realizar un ``\emph{full-upgrade}'' son:
+un disco de arranque de actualización/recuperación o el uso de un hipervisor. Dentro de
+los hipervisores, podemos utilizar uno tipo 1 o baremetal, y otro tipo 2, con un sistema
+operativo \emph{host} y otro \emph{guest}.
 
 %las referencias a artculos se ponen con \cite,
 %las referencias a imgenes \ref,
