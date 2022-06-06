@@ -5,6 +5,14 @@ servidores, servicios y máquinas; ya sean \gls{on premises} o en cloud, que pos
 el desarrollo centralizado, el control de versiones, el aseguramiento de la calidad
 y la entrega continua.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{imgs/cicd}
+    \caption{Esquemas de estrategia CI/CD.}
+    \label{imgs:cicd}
+\end{figure}
+
+
 \paragraph{}\textbf{Nota: }\emph{Cómo entrar en detalle en estos apartados sería extender
 demasiado el alcance que se prentende en este trabajo, este capítulo se va a limitar a
 describir la relación del entorno de desarrollo con los sistemas \gls{CI/CD}. Cualquier
@@ -34,7 +42,7 @@ ser implementados en función de la naturaleza del proyecto, de la cantidad de c
 sufre el código, la metodología de desarrollo de la empresa, de la relación con el
 cliente, etc.
 
-\subsection{} Ciclo de vida del desarrollo software
+\subsection{Ciclo de vida del desarrollo software}
 
 \paragraph{}Como se puede apreciar en la imagen \ref{imgs:recipe-rpi-weather-1} cada
 vez que se haga un \gls{fetch} de Rpi Weather, se va a descargar lo último que haya en la
@@ -70,6 +78,13 @@ los cambios en la rama principal. Las comprobaciones automáticas pueden incluir
 dinámico y/o estático de código, test unitarios, test de integración, compilación, etc.
 En Github, esta revisión tiene su propia herramienta llamada \emph{Pull Request}.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{imgs/github-flow}
+    \caption{Esquema de una rama en Github Flow}
+    \label{imgs:github-flow}
+\end{figure}
+
 \paragraph{Patrón Release-ready Mainline:}\label{sec:release-ready}
 
 \paragraph{}Como su propio nombre indica, este patrón de branching nos indica que cada
@@ -85,7 +100,7 @@ cambios que tengan una relación lógica. Los objetivos de una feature branch, d
 medibles y finitos. De menera que cada característica nueva del programa, cada bug, etc
 esté en su propia rama exclusiva.
 
-\subsection{} Infraestructura
+\subsection{Infraestructura}
 
 \paragraph{}Normalmente, los sistemas de control de versiones están ``supervisados''
 por equipos de compilación, analizadores estáticos y dinámicos, despligue de artefactos,
@@ -136,6 +151,13 @@ infraestructura se quiere hacer el could o \gls{on-premises}. En ambos casos, se
 describiría la una \gls{pipeline} en un archivo específico en el propio repositorio de
 código.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{imgs/sonarqube}
+    \caption{Panel principal de Sonarqube}
+    \label{imgs:sonarqube}
+\end{figure}
+
 \paragraph{}El entorno Flutter admite más variaciones en cuanto a el uso de infraestructura
 para gestionar el \emph{quality assurance}. Puede haber nodos de compilación automática,
 pero también nodos de análisis de código y ejecución de test. Por ejemplo, se puede
@@ -160,6 +182,13 @@ es necesario contar con determinadas características del hardware.
 un disco de arranque de actualización/recuperación o el uso de un hipervisor. Dentro de
 los hipervisores, podemos utilizar uno tipo 1 o baremetal, y otro tipo 2, con un sistema
 operativo \emph{host} y otro \emph{guest}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{imgs/hypervisor}
+    \caption{Esquemas de los tipos de hipervisor.}
+    \label{imgs:hipervisor}
+\end{figure}
 
 %las referencias a artculos se ponen con \cite,
 %las referencias a imgenes \ref,
