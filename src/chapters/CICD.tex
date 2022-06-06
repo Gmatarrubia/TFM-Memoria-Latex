@@ -179,9 +179,12 @@ servicio que aporte esta utilidad. En el caso de querer realizar un \emph{full-u
 es necesario contar con determinadas características del hardware.
 
 \paragraph{}Las estategias más frecuentes para realizar un ``\emph{full-upgrade}'' son:
-un disco de arranque de actualización/recuperación o el uso de un hipervisor. Dentro de
-los hipervisores, podemos utilizar uno tipo 1 o baremetal, y otro tipo 2, con un sistema
-operativo \emph{host} y otro \emph{guest}.
+\begin{itemize}
+    \item Disco de arranque de actualización/recuperación.
+    \item Hipervisor.
+        \subitem Tipo 1 o baremetal.
+        \subitem Tipo 2, con un sistema operativo \emph{host} y otro \emph{guest}.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -189,6 +192,12 @@ operativo \emph{host} y otro \emph{guest}.
     \caption{Esquemas de los tipos de hipervisor.}
     \label{imgs:hipervisor}
 \end{figure}
+
+\paragraph{}En nuestro caso, al basarnos en un hardware Raspberry Pi, dependemos del
+modelo para encontrar casos de éxito basados en hipervisores. Entonces el enfoque con
+más sentido sería crear una partición de rescate autoarrancable de solo lectura y que
+permitiera actualiar la otra partición. Este mecanismo habría que diseñarlo y desarrollarlo
+en Yocto.
 
 %las referencias a artculos se ponen con \cite,
 %las referencias a imgenes \ref,
