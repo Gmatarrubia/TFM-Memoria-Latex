@@ -1,13 +1,13 @@
 \chapter{Estado del arte}\label{sec:estadodelarte}
 
-\paragraph{}En este capítulo vamos a tratar sobre el estado actual de las tecnologías
+\paragraph{}En este capítulo se va a tratar sobre el estado actual de las tecnologías
 más relevantes para llevar a cabo entornos de desarrollo replicables, flexibles y universales.
-Explicaremos que aspectos son los más interesantes en cada caso y como podrían aplicarse.
+Explicaremos que aspectos son los más interesantes en cada caso y cómo podrían aplicarse.
 
 \section{Yocto Project.}\label{sec:yocto}
 
 \paragraph{} \emph{Yocto Project} es un proyecto colaborativo y de código abierto
-de la \emph{Linux Foundation} cuyo objetivo principal es la producir herramientas y
+de la \emph{Linux Foundation} cuyo objetivo principal es la de producir herramientas y
 procesos que permitan crear distribuciones embebidas de sistemas operativos basados
 en el Kernel de Linux. Su código está pensado para que las herramientas y las distribuciones
 generadas sean agnósticas respecto de la arquitectura del microprocesador así como del
@@ -22,17 +22,18 @@ resto del hardware.
 \end{figure}
 
 \paragraph{} Yocto es, por tanto, una excelente herramienta para asegurar la repetibilidad
-de los sistemas, así como para asegurar la seguridad de los mismos, al tiempo de ser capaz
+de los sistemas, así como para asegurar la seguridad de los mismos, además de ser capaz
 de ser flexible y parametrizable. Decimos que es bueno para asegurar la repetibilidad
 ya que la empresa toma posesión del sistema operativo entero y deja de depender de
 distribuciones de terceros que puedan introducir cambios sin previo aviso. Asegura la
-seguridad ya que tiene un gran soporte que de la comunidad \emph{\gls{open source}} cercana
+seguridad ya que tiene un gran soporte de la comunidad \emph{\gls{open source}} cercana
 al desarrollo del propio kernel de Linux, proporcionando rápidamente los últimos parches
-de seguridad que se publican. Es flexible ya que permite adaptar cualquier los cambio
+de seguridad que se publican. Es flexible ya que permite adaptar cualquier cambio
 introducido en el hardware, manteniendo antiguas versiones o incluso desarrollar más de
-un hardware al mismo tiempo. Esto es un gran ventaja en los tiempo en los que los equipos
+un hardware al mismo tiempo. Esto es un gran ventaja en los tiempos en los que los equipos
 de software deben empezar su código sin tener un sistema hardware final, donde incluso
-se desarrolle parte del hardware es dispositivos basado en \emph{\gls{FPGAs}}.
+se desarrolle parte del hardware es dispositivos basado en \emph{\gls{FPGAs}} o en
+hardware simulado.
 
 \paragraph{} Este proyecto que fue fundado en 2010 con el apoyo de grandes multinacionales
 y organizaciones. Destaca la estrecha colaboracioón con \emph{OpenEmbedded}, tomando de
@@ -40,8 +41,8 @@ ellos la mayor parte del \emph{OpenEmbedded Project} y su motor de generación (
 engine}), bitbake.
 
 \paragraph{} Como parte del proyecto, con cada versión de Yocto, se presenta una versión
-de Poky. Poky, es una distribuición de referencia, a partir de la cual, puedes basarte
-para la construción de tu distribución propia.
+de Poky. Poky, es una distribuición de referencia, a partir de la cuál, realizar las
+modificaciones para la construción de una distribución propia.
 
 \begin{figure}[h]
 	\centering
@@ -52,26 +53,26 @@ para la construción de tu distribución propia.
 
 \paragraph{}Al principio, Yocto puede resultar ser conceptualmente difícil de entender
 ya que su campo de aplicación puede ser muy variado. En este sentido, puede usarse tanto
-la creación de imágenes de completas de sistema, creación de \emph{\gls{bootloader}}, generación
+la creación de imágenes completas de sistema, creación de \emph{\glsplural{bootloader}}, generación
 de sistemas de ficheros (\emph{rootfs}), desarrollo de aplicativos, desarrollo de paquetes
-de los aplicativos, desarrollo y/o hacking del kernel, generación de toolchain, \gls{SDK},
-\gls{ADT}.
+de los aplicativos, desarrollo y/o hacking del kernel, generación de  \emph{toolchains},
+\glslink{SDK}{SDKs} o \glslink{ADT}{ADTs}.
 
-\paragraph{\label{layers} \label{recipes}}Los principales conceptos para enterder el funcionamiento de Yocto, son:
+\paragraph{\label{layers} \label{recipes}}Los principales conceptos para enterder el
+funcionamiento de Yocto, son:
 las capas o \emph{layers}, las recetas o \emph{recipes}, las clases y los ficheros de
 configuración. Las \emph{recipes} son un conjunto de instrucciones y configuraciones
 usados para la construcción de un paquete. Por ejemplo, una recipe describe la fuente
-del código, los parámetros, el compilador, los parches a aplicar así como será la instalción
+del código, los parámetros, el compilador, los parches a aplicar así como la instalación
 del paquete en la imagen. Las \emph{layers} son conjuntos de recipes agrupado por
 funciones lógicas que funcionan de manera independiente o con una dependencia bien
-documentada. Los ficheros de
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+documentada. Los ficheros de configuración suelen definir un conjunto de variables
+dependientes del entorno que queramos construir. Por último, las clases son partes de
+código común entre recetas pensadas para ser reutilizadas.
 
-
-
-
-\paragraph{}En cuanto a las opciones de testing, Yocto está dispone de test en tiempo de compilación
-así como la disposición de arrancar las imágenes generadas en una máquina virtual QEMU\ref{sec:qemu}.
+\paragraph{}En cuanto a las opciones de testing, Yocto está dispone de test en tiempo
+de compilación así como la disposición de arrancar las imágenes generadas en una máquina
+virtual QEMU \ref{sec:qemu}.
 
 \section{QEMU}\label{sec:qemu}
 
@@ -99,13 +100,13 @@ así como la disposición de arrancar las imágenes generadas en una máquina vi
 para una arquitectura diferente a la del resto del sistema arranque mediante la "traducción"
 de instrucciones en tiempo real.
 
-\paragraph{} El modo ``System emulation'' es el más común. Se utiliza para simular una computadora
-completa, incluidos sus periféricos. Qemu tiene la capacidad de albergar sistemas operativos
-linux, Solaris, Microsoft Windows, DOS y BSD.
+\paragraph{} El modo ``System emulation'' es el más común. Se utiliza para simular una
+computadora completa, incluidos sus periféricos. Qemu tiene la capacidad de albergar
+sistemas operativos linux, Solaris, Microsoft Windows, DOS y BSD.
 
-\paragraph{} Los modos ``\gls{KVM}'' y ``\gls{XEN}'' son variaciones del modo ``System emulation'' en el
-que emulan más o menos hardware con cada uno de los hipervisores cuyo nombre coincide con
-el nombre del modo.
+\paragraph{} Los modos ``\gls{KVM}'' y ``\gls{XEN}'' son variaciones del modo ``System
+emulation'' en el que emulan más o menos hardware con cada uno de los hipervisores cuyo
+nombre coincide con el nombre del modo.
 
 \section{Docker}\label{sec:docker}
 
@@ -113,7 +114,7 @@ el nombre del modo.
 una capa de aislamiento a nivel de aplicación, utilizan los recursos del Kernel de Linux
 tales como espacios de nombres. A pesar de que no supone un aislamiento tan fuerte como
 el que proporcionan las máquinas virtuales, la principal ventaja de los contenedores es
-que son mucho más livianos en cuanto necesidad de recursos de memoria, disco y computación.
+que son mucho más livianos en cuanto a la necesidad de recursos de memoria, disco y computación.
 \cite{docker}
 
 \paragraph{} Docker permite empaquetar aplicaciones y todas sus dependencias, de esta
@@ -151,27 +152,28 @@ fundamentalmente para entornos gráficos, todos los objetos en Flutter son \gls{
 	\label{fig:flutter}
 \end{figure}
 
-\paragraph{} Gracias a su capacidad para hacer el \gls{cross-compile} sencillo, resulta
+\paragraph{} Gracias a su capacidad para hacer la \gls{cross-compile} sencilla, resulta
 ser increiblemente práctico para su uso en aplicaciones embebidas. Permite el desarrollo
 de forma aislada del hardware así como el testing de la aplicación. En el apartado
 gráfico destaca la persistencia visual entre la interfaz en entornos de desarrollo y
 entornos embebidos.
 
-\paragraph{} Está escrito en el lenguaje de programación Dart\ref{sec:dart} y ha sido
+\paragraph{} Está escrito en el lenguaje de programación Dart \ref{sec:dart} y ha sido
 desarrollado por Google.
 
 \subsection{Dart}\label{sec:dart}
 
 \paragraph{}Dart es un lenguaje de programación orientado a objetos de alto nivel.
 Está optimizado para interfaces de usuario y para aumentar la productividad de desarrollo,
-ya que permite el ``hot debuging'', una técnica que permite cambiar sólo los objetos cuyo
+ya que permite el ``hot debugging'', una técnica que permite cambiar sólo los objetos cuyo
 codigo ha sido actualizado, manteniendo el resto en mitad de una sesión de depuración.
 \cite{dart}
 
 \paragraph{}Permite compilarse en código máquina para tener un rendimiento similar al
-de aplicaciones nativas. Pero también puede traducirse a JavaScript para su uso en
-entornos web. Todo eso lo convierte en un lenguaje de programación multiparadigma que
-permite el desarrollo tanto del \gls{front-end} como del \gls{back-end}.
+de aplicaciones nativas o traducirse a otros lenguajes considerador nativos en sus campos
+como por ejemplo a JavaScript para su uso en entornos web. Todo eso lo convierte en un
+lenguaje de programación multiparadigma que permite el desarrollo tanto del \gls{front-end}
+como del \gls{back-end}.
 
 \begin{figure}[H]
 	\centering
@@ -191,9 +193,14 @@ permite el desarrollo tanto del \gls{front-end} como del \gls{back-end}.
 \section{Visual Studio Code}\label{sec:vscode}
 
 \paragraph{}Visual Studio Code o VSCode abreviadamente es un \glslink{IDE}{IDE} multiplataforma
-de código abierto desarrollado por Microsoft.Es un \glslink{IDE}{IDE} ligero y modular
+de código abierto desarrollado por Microsoft. Es un \glslink{IDE}{IDE} ligero y modular
 que permite el desarrollo de software en casi todos los lenguajes de programación mediante
 la instalación de \gls{plugins}.
+
+\paragraph{}VSCode se puede personalizar completamente al uso requerido en cada caso,
+mediante archivos que añaden funcionalidad al \glslink{IDE}{IDE} en tiempo de ejecución
+y dependiendo del proyecto abierto. Por ejemplo, un repositorio de Yocto, podría tener unos
+fichero que definieran las tareas más comunes para la generación de Yocto.
 
 \begin{figure}[H]
 	\centering
@@ -222,7 +229,7 @@ hace que el desarrollo sea más cómodo.
 \end{figure}
 
 \paragraph{}Por su soporte por integración con Flutter y las razones descritas, hacen
-de Visual Studio Code el editor perfecto para este entorno de desarrollo.
+de Visual Studio Code el editor perfecto para ambos entornos de desarrollo.
 
 %las referencias a artculos se ponen con \cite,
 %las referencias a imgenes \ref,
