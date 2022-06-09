@@ -63,12 +63,13 @@ nuestro ejemplo, vamos a considerar la rama \emph{main} como una rama de release
 eso mismo, para el desarrollo de la aplicación flutter se propone el uso de los
 siguiente patrones de branching, explicando sus fundamentos.
 
-\paragraph{Política de branching GitHub-Flow:} Está política de branching agrupa unos
+\paragraph{Política de branching GitHub-Flow:}
+\paragraph{}Está política de branching agrupa unos
 cuantos patrones que adapta a su plataforma online. GitHub-Flow está orientado a proyectos
 con una sola versión en producción y una alta frecuencia de integraciones en la rama
 principal, la cual será una \emph{Release-Ready Mainline}\ref{sec:release-ready}. En
 principio las release branch no son necesarias, ni tampoco las Hotfix branch, éstas
-últimas existiran pero no será diferentes de una feature branch normal. Nadie trabajará
+últimas existirán pero no serán diferentes de una feature branch normal. Nadie trabajará
 en la rama principal, cada característica/función/mejora debe hacerse en una \emph{feature
 branch}. Dicha función o mejora debe estar acotada y una vez terminada, se hará una
 \emph{pre-integration review}, es decir que se revisarán los cambios que se quieren
@@ -100,7 +101,7 @@ cambios que tengan una relación lógica. Los objetivos de una feature branch, d
 medibles y finitos. De menera que cada característica nueva del programa, cada bug, etc
 esté en su propia rama exclusiva.
 
-\subsection{Infraestructura}
+\section{Infraestructura}\label{sec:infraestructura}
 
 \paragraph{}Normalmente, los sistemas de control de versiones están ``supervisados''
 por equipos de compilación, analizadores estáticos y dinámicos, despligue de artefactos,

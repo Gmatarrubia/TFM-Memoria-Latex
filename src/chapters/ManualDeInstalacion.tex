@@ -46,6 +46,7 @@ forma nativa o utilizar el método basado en docker.
     \item Clonar el repositorio desde github
     \begin{lstlisting}[style=consola, numbers=left]
         $ git clone https://github.com/Gmatarrubia/rpi_weather.git
+        $ cd rpi_weather
     \end{lstlisting}
 
     \item Ejecutar el script de instalación de paquetes.
@@ -76,14 +77,19 @@ forma nativa o utilizar el método basado en docker.
 usuario.
 
 \begin{enumerate}
-    \item Instalar la herramienta \textbf{\gls{git}} de control de versiones.
+    \item Instalar \textbf{\gls{git}} y \textbf{docker}.
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt install git
+
+        $ sudo apt install curl
+        $ curl -fsSL https://get.docker.com -o get-docker.sh
+        $ sudo sh get-docker.sh
     \end{lstlisting}
 
     \item Clonar el repositorio desde github
     \begin{lstlisting}[style=consola, numbers=left]
         $ git clone https://github.com/Gmatarrubia/rpi_weather.git
+        $ cd rpi_weather
     \end{lstlisting}
 
     \item Comprobar que el usuario pertenezca al grupo de docker, y en caso que de
@@ -152,7 +158,7 @@ trabajar son:
     contraseña.
 
     \item Una vez en la terminal de \gls{WSL2}, comprobamos que todo haya ido bien realizando
-    la actulización de los paquetes de sistema con:
+    la actualización de los paquetes de sistema con:
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt update
         $ sudo apt upgrade
@@ -211,8 +217,9 @@ trabajar son:
 
 \paragraph{}Al igual que sucedía con el entorno de Flutter \ref{sec:entflutter}, existe
 la posibilidad de correr el entorno de manera nativa o de manera \emph{dockerizada}.
-Se ha diseñado una instalación similar para ambos entornos para que resulte más familiar
-y por tanto más fácil de comprender. Veamos la instalación de ambos métodos:
+Ambos entornos se han diseñado para tener una instalación y usos parecidos y así que
+se mantenga una coherencia común y una experiencia de usuario parecida, reduciendo así
+la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambos métodos:
 
 \subsubsection{Manera nativa:}
 
@@ -254,8 +261,10 @@ y por tanto más fácil de comprender. Veamos la instalación de ambos métodos:
 en caso que docker no se encuentre instalado.
 
 \begin{enumerate}
-    \item Instalar docker y añadir al usuario al grupo de docker.
+    \item Instalar git y docker y añadir al usuario al grupo de docker.
     \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo apt install git
+
         $ sudo apt install curl
         $ curl -fsSL https://get.docker.com -o get-docker.sh
         $ sudo sh get-docker.sh
@@ -298,7 +307,7 @@ en caso que docker no se encuentre instalado.
 verse visiblemente afectado. Como opción alternativa se aconseja crear una máquina
 virtual Ubunut 20.04 y seguir los consejos de la instalación en Linux de manera nativa.
 
-\paragraph{}\textbf{Nota 2:}Se requieren permisos de administrador.
+\paragraph{}\textbf{Nota 2:} Se requieren permisos de administrador.
 
 \paragraph{}Los pasos para obtener nuestro entorno de desarrollo listo para trabajar son:
 
