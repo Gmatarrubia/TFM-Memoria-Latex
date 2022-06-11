@@ -5,12 +5,39 @@ presupuesto, etc.
 
 \section{Ciclo de vida}
 
-\paragraph{}Blabla
+\paragraph{}Como proyecto de ingeniería el ciclo de vida podríamos dividirlo en el
+esquema tradicional de:
 
-\section{Planificación}
+\begin{enumerate}
+  \item Comienzo de proyecto
+  \item Organización y planificación
+  \item Desarrollo
+  \item Entrega
+\end{enumerate}
+
+\paragraph{}El comienzo del proyecto ha sido la fase más temprana en la cuál se ha
+decidido el tema del proyecto, atendiendo a las necesidades o premisas iniciales. Como
+recordatorio, saber que partíamos de una pequeña empresa que quería un entorno de desarrollo
+integral para sus ingenieros, dicho entorno debía ser muy flexible y universal, preparado
+para cumplir con los requisitos típicos de las \glsplural{startup}.
+
+\paragraph{}La organización y planificación ha consistido, como su propio nombre indica,
+en dividir todas las fases del desarrollo y entrega dentro del tiempo marcado, teniendo
+en cuenta la disponibilidad personal. Para cada fase del desarrollo se ha fijado una
+fecha límite, como si fuese una entrega parcial.
+
+\paragraph{}El desarrollo del proyecto ha consistido en toda la creación de ingeniería,
+desde el diseño y especificación, hasta la entrega. En la siguiente sección \ref{sec:planificacion}
+se detalla más las subfases de esta etapa.
+
+\paragraph{}La fase de entrega ha consistido en la comprobación y evalución de los
+objetivos planteados, en la redacción de esta memoria y en la cosideración de ampliaciones
+futuras.
+
+\section{Planificación}\label{sec:planificacion}
 
 \paragraph{}Debido a que el proyecto es unipersonal y no se ha pudido desarrollar tareas
-en paralelo, la planificación del proyecto ha sido un desarrollo en cascada. En cualquier
+en paralelo, se ha desarrollado un modelo en cascada. En cualquier
 caso, por costumbre del autor, se va a tratar la planificación en terminos ágiles,
 específicamente de la metodología de SCRUM.
 
@@ -33,19 +60,34 @@ de aproximadamente de una  semana de duración cada uno.
 
 \subsection{Sprint 1: Entorno de desarrollo general.}
 
-\paragraph{}Blabla
+\paragraph{}Esta fase ha sido la primera, ya que ha consistido en el aprendizaje previo
+de las tecnologías que han sido necesarias aplicar, probarlas por separado y comprobar
+la viabiliad técnica de las especificaciones.
 
 \subsection{Sprint 2: Aplicación Flutter.}
 
-\paragraph{}Blabla
+\paragraph{}El segundo sprint fue realizar la aplicación Flutter, se ha hecho así, ya
+que Yocto trabaja recolectando fuentes de programas y compilándolos, entonces se
+necesitaba tener primero una aplicación que tener. Además, Flutter, por
+diseño, compila las aplicaciones en cualquier plataforma por lo que se podía desarrollar
+la aplicación, verla y probarla sin tener el sistema operativo final, ni conocer la
+arquitectura hardware definitiva. Al final este sprint, se tenía una aplicación plenamente
+operativa para cualquier plataforma.
 
 \subsection{Sprint 3: Yocto.}
 
-\paragraph{}Blabla
+\paragraph{}Una vez que se tuvo la aplicación Flutter desarrollada, el siguiente paso
+lógico para tener listo el prototipo, era tener un sistema corriendo en el hardware.
+Una vez esta el sistema totalmente genérico, hubo que integrarle la aplicación y relizar
+las personalizaciones pertinentes.
 
 \subsection{Sprint 4: Universalización y coherencia entre entornos.}
 
-\paragraph{}Blabla
+\paragraph{}Con el prototipo funcionando, se podría considerar que todo el entorno de
+desarrollo había sido validado, pero el esfuerzo de este proyecto ha sido siempre que
+el entorno de desarrollo fuera \emph{ad-hoc} a las necesidades, que estuviese preparado
+para funcionar de la manera más sencilla y flexible posible. Este último sprint fue el
+más complicado posiblemente y posiblemente el que más atención requiriese.
 
 \section{Presupuesto}
 
@@ -150,3 +192,10 @@ de aprender.
 que es el coste de producir pocas unidades de prototipos funcionales que puedes mostrar
 a \glsplural{early bird}. Y en base al feedback recogido, poder seguir buscando inversores,
 mejorando la ingeniería del proyecto y llevando el producto a fase de producción.
+
+
+%las referencias a artículos se ponen con \cite,
+%las referencias a glosario \gls,
+%y las referencias a ecuaciones \eqref
+%las referencias a imgenes, tablas o figuras o secciones
+% se ponen con \ref (sólo número) o con \hyperref[sec:X]{Blabla}

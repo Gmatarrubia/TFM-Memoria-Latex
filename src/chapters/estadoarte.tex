@@ -130,8 +130,9 @@ operativo dónde se ejecuten.
 
 \paragraph{} En nuestro caso, Docker nos va a ayudar a empaquetar todo el entorno de
 desarrollo y sus dependencias para que su puesta en marcha sea inmediata, también buscará
-evitar la heterogeneidad entre los entornos de desarrollo de los diferentes desarrolladores.
-
+evitar la heterogeneidad entre los entornos de desarrollo de los diferentes desarrolladores,
+así como tener un control de versiones de las propias dependencias y de las variables
+de entorno del sistema.
 
 \section{Flutter}\label{sec:flutter}
 
@@ -184,9 +185,19 @@ como del \gls{back-end}.
 
 \section{Qt}\label{sec:Qt}
 
-\section{Ansible}\label{sec:ansible}
+\paragraph{}Qt es un \gls{framework} the interfaces de usuario muy popular y extendido,
+se utiliza, fundamentalmente, en sistemas embebidos de cualquier ámbito, desde impresoras
+hasta sistemas de armamento. Esto es así porque dispone de \glsplural{API} en C++ y en
+python y ofrece una gran calidad de recursos gráficos y de herramientas. Por ejemplo,
+su \gls{IDE} qtCreator facilita muchísimo el desarrollo. Ofrece licencias gratuitas para
+programas de código abierto, y está muy bien documentada.
+
+\paragraph{}Hasta hace unos años a sido el framework rey de los sistemas embebidos, pero
+con la reciente llegada de \hyperref[sec:flutter]{Flutter}
 
 \section{Javascript con ReactJS}\label{sec:reactjs}
+
+\section{Ansible}\label{sec:ansible}
 
 \section{Vagrant}\label{sec:vagrant}
 
@@ -231,7 +242,8 @@ hace que el desarrollo sea más cómodo.
 \paragraph{}Por su soporte por integración con Flutter y las razones descritas, hacen
 de Visual Studio Code el editor perfecto para ambos entornos de desarrollo.
 
-%las referencias a artculos se ponen con \cite,
-%las referencias a imgenes \ref,
+%las referencias a artículos se ponen con \cite,
 %las referencias a glosario \gls,
 %y las referencias a ecuaciones \eqref
+%las referencias a imgenes, tablas o figuras o secciones
+% se ponen con \ref (sólo número) o con \hyperref[sec:X]{Blabla}
