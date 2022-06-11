@@ -193,13 +193,89 @@ su \gls{IDE} qtCreator facilita muchísimo el desarrollo. Ofrece licencias gratu
 programas de código abierto, y está muy bien documentada.
 
 \paragraph{}Hasta hace unos años a sido el framework rey de los sistemas embebidos, pero
-con la reciente llegada de \hyperref[sec:flutter]{Flutter}
+con la reciente llegada de \hyperref[sec:flutter]{Flutter} \ref{sec:flutter} a entornos
+de escritorio y distribuciones embebidas, puede suponer un cambio de tendencia.
 
-\section{Javascript con ReactJS}\label{sec:reactjs}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.30\linewidth]{imgs/qt}
+	\caption[Qt Logo]{Logo de Qt}
+	\label{fig:qt}
+\end{figure}
+
+
+\section{React Native}\label{sec:react}
+
+\paragraph{}React Native es una librería basada en la librería React que a diferencia
+de ésta, la compilación genera una aplicación nativa para sistemas iOS o Android. Al
+estar desarrollada en JavaScript se está convirtiendo en una de las librerías gráficas
+más populares. Además permite crear web apps que pueden correr como servicios en local
+y ser visualizadas con la ayuda de un navegador web. Existen adaptaciones mediante las
+librerías de \hyperref[sec:Qt]{Qt} \ref{sec:Qt} que pueden llevar estás aplicaciones
+gráficas a sistemas Linux. Desde un punto de vista práctico, solo sería recomendable
+esta opción para \gls{ports}, ya que al no tener un rendimiento nativo y necesitar
+adaptadres estamos malgastando los recursos, los cuales suelen ser escasos en los sistemas
+embebidos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.30\linewidth]{imgs/react-logo}
+	\caption[React Logo]{Logo de React}
+	\label{fig:react}
+\end{figure}
+
+\section{Vagrant}\label{sec:vagrant}
+
+\paragraph{}Vagrant es un gestor de máquinas virtuales propiedad de HashiCorp que automatiza
+su creación y proporciona una interfaz de alto nivel para su gestión, funciona con máquinas
+virtuales de VMWare, VirtualBox, AWS, etc. El propósito fundamental de Vagrant es la de
+replicar los entornos de ejecución y de desarrollo de forma automática, y que las pruebas
+y el desarrollo sean lo más fieles a los entornos de producción de una manera sencilla.
+
+\paragraph{}Su uso resulta muy similar al de \hyperref[sec:docker]{Docker} \ref{sec:docker}
+sólo que en este caso se administran máquinas virtuales en vez de containers. Posiblemente
+la popularidad de docker ha hecho que Vagrant haya quedado en segundo plano. Otra razón,
+por la que Vagrant no ha terminado de ser muy popular es la dependencia con tecnologías
+externas de máquinas virtuales, muchas de ellas con necesidad de licencias comerciales,
+así como el uso de hypervisores.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.50\linewidth]{imgs/vagrant-logo}
+	\caption[Vagrant Logo]{Logo de Vagrant}
+	\label{fig:vagrant}
+\end{figure}
 
 \section{Ansible}\label{sec:ansible}
 
-\section{Vagrant}\label{sec:vagrant}
+\paragraph{}Aunque Ansible es confundido muchas veces con \hyperref[sec:docker]{Docker} \ref{sec:docker}
+o con \hyperref[sec:vagrant]{Vagrant} \ref{sec:vagrant} resulta ser una tecnología
+totalmente diferente. Ansible es una plataforma de software libre para la administración
+de equipos. Permite la administración multi-nodo de forma remota y por lotes. Mediante
+un equipo orquestador, se puede automatizar el resto de nodos. Se basa en colecciones
+de libros de jugadas o \emph{playbooks}.
+
+\paragraph{}Una de las características principales de Ansible es que no tiene ninguna
+dependencia salvo la de Python, la cual es una dependencia asumible ya que la mayoría
+de distribuciones linux trae Python por defecto.
+
+\paragraph{}En nuestro caso, el entorno de desarrollo traerá los playbooks necesarios
+para la instalación de las dependencias. Están escritos en playbooks en vez de en scritps
+corrientes para poder integrarse en sistemas remotos de administración fácilmente. Desde
+el punto de vista de operacione, Ansible resulta muy conveniente para pasar la configuración
+de los entornos de desarrollo como \gls{IaaC} y por tanto usar control de versiones para
+la adminsitración y configuración de equipos.
+
+\paragraph{}Podríamos comparar Ansible con herramientas de Microsoft de gestión remota,
+aunque ésto no supone una barrera para que ansible se integré con herramientas de Microsoft
+como \emph{Active Directory}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.30\linewidth]{imgs/ansible-logo}
+	\caption[Ansible Logo]{Logo de Ansible}
+	\label{fig:ansible}
+\end{figure}
 
 \section{Visual Studio Code}\label{sec:vscode}
 
