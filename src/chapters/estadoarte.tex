@@ -264,7 +264,9 @@ para la instalación de las dependencias. Están escritos en playbooks en vez de
 corrientes para poder integrarse en sistemas remotos de administración fácilmente. Desde
 el punto de vista de operacione, Ansible resulta muy conveniente para pasar la configuración
 de los entornos de desarrollo como \gls{IaaC} y por tanto usar control de versiones para
-la adminsitración y configuración de equipos.
+la adminsitración y configuración de equipos. En un entorno empresarial real, estos
+playbooks posiblemente estarían en un repositorio distinto y se ejecutarían con permisos
+de administrador automáticamente, evitando que el usuario necesite el acceso de superusuario.
 
 \paragraph{}Podríamos comparar Ansible con herramientas de Microsoft de gestión remota,
 aunque ésto no supone una barrera para que ansible se integré con herramientas de Microsoft
