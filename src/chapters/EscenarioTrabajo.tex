@@ -24,7 +24,7 @@ y los propios desarrolladores. En nuestra versión, vamos a agrupar a los usuari
     \label{fig:mapa_empatia}
 \end{figure}
 
-\section{Equipo de desarrollo de software de sistema}
+\section{Equipo de desarrollo de software de sistema}\label{sec:systemteam}
 
 \paragraph{}La gran mayoría de productos de \gls{IoT} basados en microprocesadores,
 tienen un sistema operativo sobre el cual se ejecutan las aplicaciones, servicios o
@@ -52,19 +52,19 @@ será:
     \item Lenguaje de programación Bash, para el desarrollo de \gls{scripts} que se
     ejecutan en la consola.
     \item Lenguaje de programación Python, para el desarrollo de \gls{scripts} más complejos.
-    \item IDE para la edición de todos los ficheros.
+    \item Programa de edición de texto para la edición de los ficheros, será recomendable
+    el uso de \hyperref[sec:vscode]{Visual Studio Code} como \gls{IDE}.
 \end{itemize}
 
-\section{Equipo de desarrollado de aplicaciones UI/UX}
+\section{Equipo de desarrollado de aplicaciones UI/UX}\label{sec:uiteam}
 
-\paragraph{}Las siglas UI/UX hacen referencia al acrónimo en inglés \emph{User interface
-and user experience}, es decir, a la interfaz de usuario y cómo es la interacción con la
-misma. Dicho de otra manera, el equipo de UI/UX están a cargo del desarrollo del
-\gls{front-end}. Su objetivo es crear una interfaz alineada con las necesidades del
-usuario medio al que destinada, así como, generar una experiencia adecuada de uso. Es
-importante que la interfaz represente los objetivos de negocio, ya que es la principal
-conexión con el usuario y por tanto la mayor fuente de percepción de información y de
-imagen de marca.
+\paragraph{}El equipo de \gls{UI/UX} se dedica como su propio nombre indica a la interfaz
+de usuario y a la interacción con la misma. Dicho de otra manera, el equipo de \gls{UI/UX}
+están a cargo del desarrollo del \gls{front-end}. Su objetivo es crear una interfaz
+alineada con las necesidades del usuario medio al que destinada, así como, generar una
+experiencia adecuada de uso. Es importante que la interfaz represente los objetivos de
+negocio, ya que es la principal conexión con el usuario y por tanto la mayor fuente de
+percepción de información y de imagen de marca.
 
 \paragraph{}Técnicamente, la interfaz debe tener en cuenta las expecificaciones de diseño,
 los requisitos, el uso de recursos de cálculo así como los recursos del \gls{SDK}
@@ -88,13 +88,29 @@ y la ejecución de ambas maneras, tanto independiente en conjunto con el \gls{ba
 será:
 
 \begin{itemize}
-    \item IDE.
+    \item \hyperref[sec:vscode]{Visual Studio Code} como \gls{IDE}.
     \item Lenguaje de programación Flutter/Dart.
 \end{itemize}
 
-\section{Equipo de desarrollado de servicios de aplicaciones}
+\section{Equipo de desarrollo de servicios de aplicaciones}
 
-\paragraph{}Blabla
+\paragraph{}También conocido como el equipo de \gls{back-end} es el encargado de programar
+la lógica del programa. También suelen programar la comunicación con dispositivos externos,
+ya sean dispositivos hardware como dispositivos de red. Suelen estar en permanente
+contacto con el \hyperref[sec:uiteam]{equipo de UI/UX} para coordinar la representación
+de los distintos datos en la interfaces visuales, de la misma manera, están en contacto
+con el \hyperref[sec:systemteam]{equipo de software de sistema} para concretar los
+recursos, métodos y protocolos disponibles para hacer llamadas, peticiones o contestar
+a llamadas, peticiones y eventos externos.
+
+\paragraph{}Tienen una gran responsabilidad al hacer de ``puente'' entre el resto de
+equipos, suelen tener a los programadores con mejores \emph{skills} técnicas. Los
+lenguajes de programación más utilizados son C/C++, Rust, Go o Dart por citar unos pocos.
+En este caso, la aplicación tiene una arquitectura monolítica, que en contra posición
+con la tendencia de microservicios actual, concentra todo el código en un sólo fichero
+binario ejecutable. Aunque una arquitectura monolítica puede utilizar diferentes hilos
+de ejecución, desde el punto de vista del sistema operativo toda la aplicación es un
+mismo servicio en ejecución.
 
 \section{Equipo de integración y distribución DevOps}
 
