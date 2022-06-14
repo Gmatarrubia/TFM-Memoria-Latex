@@ -32,18 +32,19 @@ microservicios. Los desarrolladores del software de sistema se encargan de gesti
 este sistema operativo. Los principales aspectos que deben tener en cuenta son:
 
 \begin{itemize}
+    \item Proveer del compilador, la toolchain y del \gls{SDK}.
     \item Proveer de las librerías necesarias para la ejecución de la aplicaciones o
     servicios.
     \item Velar por la estabilidad del sistema.
     \item Asegurar la ciberseguridad del dispositivo.
     \item Proveer el acceso a los recursos hardware por parte del software, mediante
     drivers propios o desarrollados por terceros.
-    \item En muchos caso, desarrollan las herramientas de distribuición y despliegue
+    \item En muchos casos, desarrollan las herramientas de distribuición y despliegue
     de todo el software en los dispositivos.
 \end{itemize}
 
-\paragraph{}La principales herramientas de trabajo dentro del entorno de desarrollo para este equipo
-será:
+\paragraph{}Las principales herramientas de trabajo dentro del entorno de desarrollo
+para este equipo serán:
 
 \begin{itemize}
     \item Yocto \ref{sec:yocto} y bitbake para el desarrollo de layers \ref{layers} y
@@ -84,8 +85,8 @@ y la ejecución de ambas maneras, tanto independiente en conjunto con el \gls{ba
     \item Ejecución conjunta con el \gls{back-end}.
 \end{itemize}
 
-\paragraph{}La principales herramientas de trabajo dentro del entorno de desarrollo para este equipo
-será:
+\paragraph{}Las principales herramientas de trabajo dentro del entorno de desarrollo
+para este equipo serán:
 
 \begin{itemize}
     \item \hyperref[sec:vscode]{Visual Studio Code} como \gls{IDE}.
@@ -95,7 +96,7 @@ será:
 \section{Equipo de desarrollo de servicios de aplicaciones}
 
 \paragraph{}También conocido como el equipo de \gls{back-end} es el encargado de programar
-la lógica del programa. También suelen programar la comunicación con dispositivos externos,
+la lógica del programa y además suelen programar la comunicación con dispositivos externos,
 ya sean dispositivos hardware como dispositivos de red. Suelen estar en permanente
 contacto con el \hyperref[sec:uiteam]{equipo de UI/UX} para coordinar la representación
 de los distintos datos en la interfaces visuales, de la misma manera, están en contacto
@@ -107,18 +108,89 @@ a llamadas, peticiones y eventos externos.
 equipos, suelen tener a los programadores con mejores \emph{skills} técnicas. Los
 lenguajes de programación más utilizados son C/C++, Rust, Go o Dart por citar unos pocos.
 En este caso, la aplicación tiene una arquitectura monolítica, que en contra posición
-con la tendencia de microservicios actual, concentra todo el código en un sólo fichero
-binario ejecutable. Aunque una arquitectura monolítica puede utilizar diferentes hilos
-de ejecución, desde el punto de vista del sistema operativo toda la aplicación es un
+con la tendencia de microservicios actual, concentra todo el código en un sólo binario
+ejecutable. Por ese motivo, en este caso los programadores \gls{back-end} también
+programan en el lenguaje Dart. Aunque una arquitectura monolítica puede utilizar diferentes
+hilos de ejecución, desde el punto de vista del sistema operativo toda la aplicación es un
 mismo servicio en ejecución.
 
-\section{Equipo de integración y distribución DevOps}
+\paragraph{}Los principales aspectos que deben tener en cuenta son:
 
-\paragraph{}Blabla
+\begin{itemize}
+    \item Ejecución independiente de la lógica del programa.
+    \item Ejecución conjunta con las interfaces reales, \emph{mock-ups} o los test.
+    \item Protocolos de comunicación con dispositivos externos.
+\end{itemize}
 
-\section{Equipo de testing y QA}
+\paragraph{}Las principales herramientas de trabajo dentro del entorno de desarrollo
+para este equipo serán:
 
-\paragraph{}Blabla
+\begin{itemize}
+    \item \hyperref[sec:vscode]{Visual Studio Code} como \gls{IDE}.
+    \item Lenguaje de programación Flutter/Dart.
+\end{itemize}
+
+\section{Equipo de tools, integración y distribución DevOps}
+
+\paragraph{}Los roles de este equipo suelen estar repartidos o diluidos en el resto de
+equipos, especialmente en el equipo de desarrollo de software de sistema ya que comparten
+parte de los concimientos e inquietudes. A veces, estas funciones las suele hacer una
+persona creando un ``team'' monopersonal. Sólo en los entornos más complicados suelen
+tener un equipo de ingenieros dedicados al propio entorno.
+
+
+\paragraph{}Los principales aspectos que deben tener en cuenta son:
+
+\begin{itemize}
+    \item Proveer de scripts y servicios de distribución y despliegue.
+    \item Mantener la infraestructura \gls{CI/CD} estable y operativa.
+    \item Proveer de scripts para diferences tareas propias de los procesos internos.
+    \item Desarrollo y/o uso de \gls{API} de servicios de infraestructura.
+    \item Proveer de herramientas y servicios para el uso del equipo de
+    \hyperref[sec:testingqa]{QA y Management}.
+\end{itemize}
+
+\paragraph{}Las principales herramientas de trabajo dentro del entorno de desarrollo
+para este equipo serán:
+
+\begin{itemize}
+    \item Uso de la consola o \gls{shell}.
+    \item Lenguaje de programación Bash, para el desarrollo de \gls{scripts} que se
+    ejecutan en la consola.
+    \item Lenguaje de programación Python, para el desarrollo de \gls{scripts} más complejos.
+    \item Desarrollo de \emph{playbooks} de \hyperref[sec:ansible]{ansible}.
+\end{itemize}
+
+\section{Equipo de testing y QA}\label{sec:testingqa}
+
+\paragraph{}Aunque puede ser un equipo que no se entienda como imprescindible por gestores
+de proyecto o managers ajenos al mundo del softwere, no puede ser visión más ajena a
+la realidad. Un equipo de testing y QA puede llegar a acortar mucho los plazos de entrega,
+mejorar la ciberseguridad y detectar errores que arruinan la experiencia de usuario,
+en definitiva, ahorrar mucho dinero al proyecto. Este equipo es el encargado de visualizar
+las métricas de calidad y mantenerlas dentro de un humbral marcado. Suele desarrollar
+la parte del entorno y la arquitectura de las pruebas, suelen desarrollar los test de
+integración y/o sistema y, a veces, también los test unitarios.
+
+\paragraph{}Los principales aspectos que deben tener en cuenta son:
+
+\begin{itemize}
+    \item Desarrollar la arquitectura del entorno de pruebas.
+    \item Estar en contacto con los desarrolladores para vigilar y reportar que se arreglan
+    los fallos o bugs reportados.
+    \item Consultar los servicios de la infraestructura que ofrecen los resultados de
+    las pruebas.
+    \item Planificar las rama de release en control de versiones.
+\end{itemize}
+
+\paragraph{}Las principales herramientas de trabajo dentro del entorno de desarrollo
+para este equipo serán:
+
+\begin{itemize}
+    \item \hyperref[sec:vscode]{Visual Studio Code} como \gls{IDE}.
+    \item Lenguaje de programación Flutter/Dart.
+    \item Uso de la consola o \gls{shell}.
+\end{itemize}
 
 %las referencias a artículos se ponen con \cite,
 %las referencias a glosario \gls,
