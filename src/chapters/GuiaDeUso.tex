@@ -22,7 +22,95 @@ que el de funcionar juntas.
 
 \section{Entorno de desarrollo Yocto}
 
-\paragraph{}Blabla
+\paragraph{}Este es el entorno de desarrollo de la distribución FlutterPI. Una distribución
+con el kernel de linux para Raspberry Pi basada en poky (yocto) la cuál está pensada
+para correr aplicaciones de Flutter. Esto es muy útil para múltiples aplicaciones como
+por ejemplo: Máquinas de vending, paneles de información, y muchísimos otros tipos de
+HMIs. Este entorno de desarrollo te permite tomarlo de plantilla y desarrollar rápidamente
+un sistema HMI, fiable, replicable y altamente personalizable.
+
+\subsection{Características principales}
+
+\paragraph{}Este entorno ha sido diseñado teniendo en cuanta los siguiente aspectos:
+
+\begin{itemize}
+    \item Compatibilidad con la mayoría de sistemas operativos.
+    \item Facilidad de uso.
+    \item Entendible y bien documentado.
+    \item Fácil de gestionar remotamente.
+    \item Flexibilidad y multipropósito.
+\end{itemize}
+
+\subsection{Usos principales}
+
+\paragraph{Nota:} Este entorno corre nativamente en sistemas con distribuciones Ubuntu 20.04.
+Para el resto de sistemas utilizar cualquiera de los métodos alternativos:
+
+\begin{itemize}
+    \item Entorno dockerizado.
+    \item Máquina virtual con Ubuntu 20.04.
+    \item Entorno en WSL2 (sólo para sistemas Windows 10/11.)
+\end{itemize}
+
+\paragraph{}Acudir al capítulo \hyperref[sec:ManualDeInstalacion]{Manual de instalación}
+\ref{sec:ManualDeInstalacion} antes de intentar los procedimientos descritos en este
+capítulo.
+
+\subsection{Build}
+
+\paragraph{}Para lanzar la generación de la imagen completa con las configuraciones por
+defecto utilizar el siguiente comando. El resultado será una imagen arrancable en una
+Raspberry Pi el cuál arrancará una aplicación Flutter al comienzo.
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ ./build.sh
+\end{lstlisting}
+
+\paragraph{}Antes de empezar la generación, el entorno te preguntará la configuración
+Wi-Fi para conectarse a un punto de acceso (ssid + pass). Ésto se puede saltar si
+previamente se han configurado las variables de entorno: \emph{WIFISSID} y \emph{WIFIPASS}.
+
+\paragraph{}Para más información sobre los aspectos del script de build pueden ser
+consultados con el comando:
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ ./build.sh --help
+\end{lstlisting}
+
+\subsection{Comando de build personalizados}
+
+Build script let you enter your custom bitbake commands. This can be done by using the -bc or --bitbake-cmd argument followed by the double-quoted command. See some examples:
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ ./build.sh --bitbake-cmd "bitbake -s | grep flutter"
+    $ ./build.sh -bc "bitbake -D wifi -c clean"
+    $ ./build.sh --bitbake-cmd "bitbake-layers show-layers"
+\end{lstlisting}
+
+\subsection{Lanzar el modo Sesión Interactiva}
+
+This is a powerful way to debug and develop either your recipes or your flutter apps. If you are interested in open an interative session run this:
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ ./build.sh --shell
+\end{lstlisting}
+
+Once you are inside the `shell` you will be able to use commands like:
+
+\begin{itemize}
+    \item bitbake
+    \item bitbake-getvar
+    \item bitbake-layers
+    \item devtool
+\end{itemize}
+
+\subsection{Cleaning}
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ ./cleanAll.sh
+    # Keep in mind it could be dangerous in case you have unsaved changes.
+    $ git clean -fdx
+\end{lstlisting}
 
 
 %las referencias a artículos se ponen con \cite,
