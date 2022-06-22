@@ -34,7 +34,7 @@ la versión de Ubuntu 20.04 se podrá optar por tres estrategias: correr el ento
 forma nativa, utilizar el método basado en docker o utilizar la característica de
 desarrollo en container de Visual Studio Code, que sería una solución intermedia.
 
-\subsubsection{Manera nativa:}
+\subsection{Manera nativa:}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
 
@@ -72,7 +72,7 @@ desarrollo en container de Visual Studio Code, que sería una solución intermed
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsubsection{Entorno de desarrollo dockerizado:}
+\subsection{Entorno de desarrollo dockerizado:}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
 usuario en caso de que docker no esté previamente instalado.
@@ -124,7 +124,7 @@ usuario en caso de que docker no esté previamente instalado.
 	\label{imgs:vscode-ready}
 \end{figure}
 
-\subsubsection{Desarrollo en container de \Gls{vscode}:}
+\subsection{Desarrollo en container de vscode:}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
 usuario en caso de que docker no esté previamente instalado.
@@ -139,6 +139,14 @@ usuario en caso de que docker no esté previamente instalado.
         $ sudo sh get-docker.sh
         $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami)
     \end{lstlisting}
+    A continuación será necesario reiniciar para que se haga efectiva la inclusión del
+    usuario en el grupo de docker.
+
+    \item Clonar el repositorio desde github y entrar en el directorio.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
+        $ cd rpi_weather
+    \end{lstlisting}
 
     \item Instalar Visual Studio Code.
     \begin{lstlisting}[style=consola, numbers=left]
@@ -149,20 +157,19 @@ usuario en caso de que docker no esté previamente instalado.
     \end{lstlisting}
 
     \item Abrir Visual Studio Code e instalar las extensiones necesarias. Para ello
-    una vez en VSCode, utilizar el atajo de teclado \emph{Ctrl+p} e introducir el siguiente
-    comando. Debemos aceptar cualquier sugerencia que nos pregunte:
+    abrir Vscode con el comando ``code'' en una terminal, y luego utilizar el atajo de
+    teclado \emph{Ctrl+p} e introducir el siguiente comando:
     \begin{lstlisting}[style=cmd]
-        ext ms-vscode-remote.remote-containers
+        ext install ms-vscode-remote.vscode-remote-extensionpack
     \end{lstlisting}
     Repetir con la extensión de docker.
     \begin{lstlisting}[style=cmd]
-        ext ms-azuretools.vscode-docker
+        ext install ms-azuretools.vscode-docker
     \end{lstlisting}
+    A continuación cerrar \gls{vscode}.
 
-    \item Clonar el repositorio desde github y abrirlo con \gls{vscode}
+    \item Abrir el repositorio con \gls{vscode}
     \begin{lstlisting}[style=consola, numbers=left]
-        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
-        $ cd rpi_weather
         $ code .
     \end{lstlisting}
 
@@ -238,7 +245,7 @@ trabajar son:
     una vez en VSCode, utilizar el atajo de teclado \emph{Ctrl+p} e introducir el siguiente
     comando. Debemos aceptar cualquier sugerencia que nos pregunte:
     \begin{lstlisting}[style=cmd]
-        ext install ms-vscode-remote.remote-wsl
+        ext install ms-vscode-remote.vscode-remote-extensionpack
     \end{lstlisting}
 
     \item Abrir un entorno \gls{WSL2} en Visual Studio Code y abrir la carpeta del repositorio
@@ -271,7 +278,7 @@ Ambos entornos se han diseñado para tener una instalación y usos parecidos y a
 se mantenga una coherencia común y una experiencia de usuario parecida, reduciendo así
 la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambos métodos:
 
-\subsubsection{Manera nativa:}
+\subsection{Manera nativa:}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
 
@@ -304,7 +311,7 @@ la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambo
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsubsection{Manera basada en docker:}
+\subsection{Manera basada en docker:}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario
 usuario en caso de que docker no esté previamente instalado.
@@ -350,7 +357,7 @@ usuario en caso de que docker no esté previamente instalado.
     \label{imgs:yocto-docker-ready}
 \end{figure}
 
-\subsubsection{Desarrollo en container de \Gls{vscode}:}
+\subsection{Desarrollo en container de vscode:}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
 usuario en caso de que docker no esté previamente instalado.
@@ -365,6 +372,14 @@ usuario en caso de que docker no esté previamente instalado.
         $ sudo sh get-docker.sh
         $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami)
     \end{lstlisting}
+    A continuación será necesario reiniciar para que se haga efectiva la inclusión del
+    usuario en el grupo de docker.
+
+    \item Clonar el repositorio desde github y entrar en el directorio.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/dev_env_rpi_flutter_yocto.git
+        $ cd dev_env_rpi_flutter_yocto
+    \end{lstlisting}
 
     \item Instalar Visual Studio Code.
     \begin{lstlisting}[style=consola, numbers=left]
@@ -375,20 +390,19 @@ usuario en caso de que docker no esté previamente instalado.
     \end{lstlisting}
 
     \item Abrir Visual Studio Code e instalar las extensiones necesarias. Para ello
-    una vez en VSCode, utilizar el atajo de teclado \emph{Ctrl+p} e introducir el siguiente
-    comando. Debemos aceptar cualquier sugerencia que nos pregunte:
+    abrir Vscode con el comando ``code'' en una terminal, y luego utilizar el atajo de
+    teclado \emph{Ctrl+p} e introducir el siguiente comando:
     \begin{lstlisting}[style=cmd]
-        ext ms-vscode-remote.remote-containers
+        ext install ms-vscode-remote.vscode-remote-extensionpack
     \end{lstlisting}
     Repetir con la extensión de docker.
     \begin{lstlisting}[style=cmd]
-        ext ms-azuretools.vscode-docker
+        ext install ms-azuretools.vscode-docker
     \end{lstlisting}
+    A continuación cerrar \gls{vscode}.
 
-    \item Clonar el repositorio desde github y abrirlo con \gls{vscode}
+    \item Abrir el repositorio con \gls{vscode}
     \begin{lstlisting}[style=consola, numbers=left]
-        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
-        $ cd rpi_weather
         $ code .
     \end{lstlisting}
 
@@ -447,7 +461,7 @@ virtual Ubunut 20.04 y seguir los consejos de la instalación en Linux de manera
     una vez en VSCode, utilizar el atajo de teclado \emph{Ctrl+p} e introducir el siguiente
     comando. Debemos aceptar cualquier sugerencia que nos pregunte:
     \begin{lstlisting}[style=cmd]
-        ext install ms-vscode-remote.remote-wsl
+        ext install ms-vscode-remote.vscode-remote-extensionpack
     \end{lstlisting}
 
     \item Abrir un entorno \gls{WSL2} en Visual Studio Code y abrir la carpeta del repositorio
