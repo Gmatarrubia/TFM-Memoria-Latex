@@ -34,7 +34,7 @@ la versión de Ubuntu 20.04 se podrá optar por tres estrategias: correr el ento
 forma nativa, utilizar el método basado en docker o utilizar la característica de
 desarrollo en container de Visual Studio Code, que sería una solución intermedia.
 
-\subsection{Manera nativa:}
+\subsection{Instalación nativa.}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
 
@@ -72,7 +72,7 @@ desarrollo en container de Visual Studio Code, que sería una solución intermed
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsection{Entorno de desarrollo dockerizado:}
+\subsection{Entorno de desarrollo dockerizado.}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
 usuario en caso de que docker no esté previamente instalado.
@@ -85,8 +85,11 @@ usuario en caso de que docker no esté previamente instalado.
         $ sudo apt install curl
         $ curl -fsSL https://get.docker.com -o get-docker.sh
         $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami)
+        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
     \end{lstlisting}
+    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
+    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
+    comandos de test, está vez debería salirnos un mensaje ``OK''.
 
     \item Clonar el repositorio desde github
     \begin{lstlisting}[style=consola, numbers=left]
@@ -124,7 +127,7 @@ usuario en caso de que docker no esté previamente instalado.
 	\label{imgs:vscode-ready}
 \end{figure}
 
-\subsection{Desarrollo en container de vscode:}
+\subsection{Desarrollo en container de vscode.}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
 usuario en caso de que docker no esté previamente instalado.
@@ -137,10 +140,11 @@ usuario en caso de que docker no esté previamente instalado.
         $ sudo apt install curl
         $ curl -fsSL https://get.docker.com -o get-docker.sh
         $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami)
+        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
     \end{lstlisting}
-    A continuación será necesario reiniciar para que se haga efectiva la inclusión del
-    usuario en el grupo de docker.
+    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
+    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
+    comandos de test, está vez debería salirnos un mensaje ``OK''.
 
     \item Clonar el repositorio desde github y entrar en el directorio.
     \begin{lstlisting}[style=consola, numbers=left]
@@ -261,7 +265,7 @@ trabajar son:
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsection{Instalación en sistemas operativos MacOS}
+\subsection{Instalación en sistemas operativos MacOS.}
 
 \paragraph{}Blabla
 
@@ -278,7 +282,7 @@ Ambos entornos se han diseñado para tener una instalación y usos parecidos y a
 se mantenga una coherencia común y una experiencia de usuario parecida, reduciendo así
 la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambos métodos:
 
-\subsection{Manera nativa:}
+\subsection{Instalación nativa.}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
 
@@ -311,21 +315,24 @@ la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambo
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsection{Manera basada en docker:}
+\subsection{Instalación basada en docker.}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario
 usuario en caso de que docker no esté previamente instalado.
 
 \begin{enumerate}
-    \item Instalar git y docker (\emph{sólo si es necesario}).
+    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt install git
 
         $ sudo apt install curl
         $ curl -fsSL https://get.docker.com -o get-docker.sh
         $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami)
+        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
     \end{lstlisting}
+    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
+    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
+    comandos de test, está vez debería salirnos un mensaje ``OK''.
 
     \item Clonar el repositorio desde github
     \begin{lstlisting}[style=consola, numbers=left]
@@ -357,7 +364,7 @@ usuario en caso de que docker no esté previamente instalado.
     \label{imgs:yocto-docker-ready}
 \end{figure}
 
-\subsection{Desarrollo en container de vscode:}
+\subsection{Desarrollo en container de vscode.}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
 usuario en caso de que docker no esté previamente instalado.
@@ -370,10 +377,11 @@ usuario en caso de que docker no esté previamente instalado.
         $ sudo apt install curl
         $ curl -fsSL https://get.docker.com -o get-docker.sh
         $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami)
+        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
     \end{lstlisting}
-    A continuación será necesario reiniciar para que se haga efectiva la inclusión del
-    usuario en el grupo de docker.
+    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
+    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
+    comandos de test, está vez debería salirnos un mensaje ``OK''.
 
     \item Clonar el repositorio desde github y entrar en el directorio.
     \begin{lstlisting}[style=consola, numbers=left]
@@ -417,7 +425,7 @@ usuario en caso de que docker no esté previamente instalado.
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsection{Instalación en sistemas operativos Windows}
+\subsection{Instalación en sistemas operativos Windows.}
 
 \paragraph{}\textbf{Nota:} Este método es una prueba de concepto y el rendimiento puede
 verse visiblemente afectado. Como opción alternativa se aconseja crear una máquina
@@ -477,7 +485,7 @@ virtual Ubunut 20.04 y seguir los consejos de la instalación en Linux de manera
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsection{Instalación en sistemas operativos MacOS}
+\subsection{Instalación en sistemas operativos MacOS.}
 
 \paragraph{}Blabla
 
