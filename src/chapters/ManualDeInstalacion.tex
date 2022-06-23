@@ -34,6 +34,104 @@ la versión de Ubuntu 20.04 se podrá optar por tres estrategias: correr el ento
 forma nativa, utilizar el método basado en docker o utilizar la característica de
 desarrollo en container de Visual Studio Code, que sería una solución intermedia.
 
+\subsection{Desarrollo en container de vscode.}
+
+\paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
+usuario en caso de que docker no esté previamente instalado.
+
+\begin{enumerate}
+    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo apt install -y git
+    \end{lstlisting}
+
+    \item Clonar el repositorio desde github y entrar en el directorio.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
+        $ cd rpi_weather
+    \end{lstlisting}
+
+    \item Instalar Docker.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ source checkFunctions.sh
+        $ check_docker
+    \end{lstlisting}
+    \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
+    script nos indicará si ésto fuera necesario. Si reiniciáramos, abririamos una
+    terminal, iríamos al directorio del repositorio y continuaríamos con el siguiente
+    paso.
+
+    \item Instalar Visual Studio Code.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ source checkFunctions.sh
+        $ check_vscode
+    \end{lstlisting}
+
+    \item Abrir el repositorio con \gls{vscode}
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ code .
+    \end{lstlisting}
+
+    \item Reabrir la carpeta en el container como nos sugerirá.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\textwidth]{imgs/dev-container}
+        \caption[Mensaje emergente en vscode]{Mensaje emergente en vscode.}
+        \label{imgs:vscode-devcontainer}
+    \end{figure}
+
+    \item Fin de la instalación. En caso de que no \gls{vscode} no detecte el \gls{SDK}
+    reiniciar \gls{vscode} y volver a abrirlo y volver a dar a ``abrir en container''.
+\end{enumerate}
+
+\subsection{Entorno de desarrollo dockerizado.}
+
+\paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
+usuario en caso de que docker no esté previamente instalado.
+
+\begin{enumerate}
+    \item Instalar \textbf{\gls{git}} (\emph{sólo si es necesario}).
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo apt install -y git
+    \end{lstlisting}
+
+    \item Clonar el repositorio desde github
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
+        $ cd rpi_weather
+    \end{lstlisting}
+
+    \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
+    se puede utilizar la siguente opctión.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ source checkFunctions.sh
+        $ check_vscode
+    \end{lstlisting}
+
+    \item Ejecutar el script inicialización de container. Este script construye la
+    imagen en caso de que no haya sido creada previamente.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ ./init-docker-env.sh
+    \end{lstlisting}
+    \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
+    script nos indicará si ésto fuera necesario. Si reiniciamos, sería necesario volver
+    a repetir este último paso para que la instalación continue.
+
+    \item Ejecutar el script de obtención de dependencias.
+    \begin{lstlisting}[style=consola, numbers=left]
+        (docker)$ ./getSources.sh
+    \end{lstlisting}
+
+    \item Fin de la instalación.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/vscode-ready}
+	\caption[Visual Studio Code]{Visual Studio Code con el proyecto abierto.}
+	\label{imgs:vscode-ready}
+\end{figure}
+
 \subsection{Instalación nativa.}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
@@ -41,7 +139,7 @@ desarrollo en container de Visual Studio Code, que sería una solución intermed
 \begin{enumerate}
     \item Instalar la herramienta \textbf{\gls{git}} de control de versiones.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
+        $ sudo apt install -y git
     \end{lstlisting}
 
     \item Clonar el repositorio desde github
@@ -63,130 +161,11 @@ desarrollo en container de Visual Studio Code, que sería una solución intermed
     \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
     se puede utilizar la siguente opctión.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo su
-        (root)$ source checkFunctions
-        (root)$ check_vscode
-        (root)$ exit
+        $ source checkFunctions.sh
+        $ check_vscode
     \end{lstlisting}
 
     \item Fin de la instalación.
-\end{enumerate}
-
-\subsection{Entorno de desarrollo dockerizado.}
-
-\paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
-usuario en caso de que docker no esté previamente instalado.
-
-\begin{enumerate}
-    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
-
-        $ sudo apt install curl
-        $ curl -fsSL https://get.docker.com -o get-docker.sh
-        $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
-    \end{lstlisting}
-    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
-    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
-    comandos de test, está vez debería salirnos un mensaje ``OK''.
-
-    \item Clonar el repositorio desde github
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
-        $ cd rpi_weather
-    \end{lstlisting}
-
-    \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
-    se puede utilizar la siguente opctión.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo su
-        (root)$ source checkFunctions
-        (root)$ check_vscode
-        (root)$ exit
-    \end{lstlisting}
-
-    \item Ejecutar el script inicialización de container. Este script construye la
-    imagen en caso de que no haya sido creada previamente.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ ./init-docker-env.sh
-    \end{lstlisting}
-
-    \item Ejecutar el script de obtención de dependencias.
-    \begin{lstlisting}[style=consola, numbers=left]
-        (docker)$ ./getSources.sh
-    \end{lstlisting}
-
-    \item Fin de la instalación.
-\end{enumerate}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\textwidth]{imgs/vscode-ready}
-	\caption[Visual Studio Code]{Visual Studio Code con el proyecto abierto.}
-	\label{imgs:vscode-ready}
-\end{figure}
-
-\subsection{Desarrollo en container de vscode.}
-
-\paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
-usuario en caso de que docker no esté previamente instalado.
-
-\begin{enumerate}
-    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
-
-        $ sudo apt install curl
-        $ curl -fsSL https://get.docker.com -o get-docker.sh
-        $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
-    \end{lstlisting}
-    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
-    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
-    comandos de test, está vez debería salirnos un mensaje ``OK''.
-
-    \item Clonar el repositorio desde github y entrar en el directorio.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ git clone https://github.com/Gmatarrubia/rpi_weather.git
-        $ cd rpi_weather
-    \end{lstlisting}
-
-    \item Instalar Visual Studio Code.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo su
-        (root)$ source checkFunctions
-        (root)$ check_vscode
-        (root)$ exit
-    \end{lstlisting}
-
-    \item Abrir Visual Studio Code e instalar las extensiones necesarias. Para ello
-    abrir Vscode con el comando ``code'' en una terminal, y luego utilizar el atajo de
-    teclado \emph{Ctrl+p} e introducir el siguiente comando:
-    \begin{lstlisting}[style=cmd]
-        ext install ms-vscode-remote.vscode-remote-extensionpack
-    \end{lstlisting}
-    Repetir con la extensión de docker.
-    \begin{lstlisting}[style=cmd]
-        ext install ms-azuretools.vscode-docker
-    \end{lstlisting}
-    A continuación cerrar \gls{vscode}.
-
-    \item Abrir el repositorio con \gls{vscode}
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ code .
-    \end{lstlisting}
-
-    \item Reabrir la carpeta en el container como nos sugerirá.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.55\textwidth]{imgs/dev-container}
-        \caption[Mensaje emergente en vscode]{Mensaje emergente en vscode.}
-        \label{imgs:vscode-devcontainer}
-    \end{figure}
-
-    \item Fin de la instalación. En caso de que no \gls{vscode} no detecte el \gls{SDK}
-    reiniciar \gls{vscode} y volver a abrirlo y volver a dar a ``abrir en container''.
 \end{enumerate}
 
 \subsection{Instalación en sistemas operativos Windows}
@@ -227,7 +206,7 @@ trabajar son:
     \item Siguiendo en la terminal de \gls{WSL2}, instalamos la herramienta git y clonamos
     el repositorio.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
+        $ sudo apt install -y git
         $ git clone https://github.com/Gmatarrubia/rpi_weather.git
     \end{lstlisting}
 
@@ -270,6 +249,7 @@ trabajar son:
 \paragraph{}Blabla
 
 \newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Instalación del entorno Yocto}
 
@@ -282,6 +262,98 @@ Ambos entornos se han diseñado para tener una instalación y usos parecidos y a
 se mantenga una coherencia común y una experiencia de usuario parecida, reduciendo así
 la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambos métodos:
 
+\subsection{Desarrollo en container de vscode.}
+
+\paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
+usuario en caso de que docker no esté previamente instalado.
+
+\begin{enumerate}
+    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo apt install -y git
+    \end{lstlisting}
+
+    \item Clonar el repositorio desde github y entrar en el directorio.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/dev_env_rpi_flutter_yocto.git
+        $ cd dev_env_rpi_flutter_yocto
+    \end{lstlisting}
+
+    \item Instalar Docker.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ source checkFunctions.sh
+        $ check_docker
+    \end{lstlisting}
+    \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
+    script nos indicará si ésto fuera necesario. Si reiniciáramos, abririamos una
+    terminal, iríamos al directorio del repositorio y continuaríamos con el siguiente
+    paso.
+
+    \item Instalar Visual Studio Code.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ source checkFunctions.sh
+        $ check_vscode
+    \end{lstlisting}
+
+    \item Abrir el repositorio con \gls{vscode}
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ code .
+    \end{lstlisting}
+
+    \item Reabrir la carpeta en el container como nos sugerirá.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\textwidth]{imgs/dev-container}
+        \caption[Mensaje emergente en vscode]{Mensaje emergente en vscode.}
+        \label{imgs:vscode-devcontainer2}
+    \end{figure}
+
+    \item Fin de la instalación.
+\end{enumerate}
+
+\subsection{Instalación basada en docker.}
+
+\paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario
+usuario en caso de que docker no esté previamente instalado.
+
+\begin{enumerate}
+    \item Instalar \textbf{\gls{git}} (\emph{sólo si es necesario}).
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo apt install -y git
+    \end{lstlisting}
+
+    \item Clonar el repositorio desde github
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ git clone https://github.com/Gmatarrubia/dev_env_rpi_flutter_yocto.git
+        $ cd dev_env_rpi_flutter_yocto
+    \end{lstlisting}
+
+    \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
+    se puede utilizar la siguente opctión.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ source checkFunctions.sh
+        $ check_vscode
+    \end{lstlisting}
+
+    \item Ejecutar el script inicialización de container. Este script construye la
+    imagen en caso de que no haya sido creada previamente.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ ./init-docker-env.sh
+    \end{lstlisting}
+    \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
+    script nos indicará si ésto fuera necesario. Si reiniciamos, sería necesario volver
+    a repetir este último paso para que la instalación continue.
+
+    \item Fin de la instalación.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/yocto-docker-ready}
+    \caption[yocto docker ready]{Entorno de desarrollo Yocto listo.}
+    \label{imgs:yocto-docker-ready}
+\end{figure}
+
 \subsection{Instalación nativa.}
 
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
@@ -289,7 +361,7 @@ la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambo
 \begin{enumerate}
     \item Instalar la herramienta \textbf{\gls{git}} de control de versiones.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
+        $ sudo apt install -y git
     \end{lstlisting}
 
     \item Clonar el repositorio desde github
@@ -306,121 +378,9 @@ la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambo
     \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
     se puede utilizar la siguente opctión.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo su
-        (root)$ source checkFunctions
-        (root)$ check_vscode
-        (root)$ exit
+        $ source checkFunctions.sh
+        $ check_vscode
     \end{lstlisting}
-
-    \item Fin de la instalación.
-\end{enumerate}
-
-\subsection{Instalación basada en docker.}
-
-\paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario
-usuario en caso de que docker no esté previamente instalado.
-
-\begin{enumerate}
-    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
-
-        $ sudo apt install curl
-        $ curl -fsSL https://get.docker.com -o get-docker.sh
-        $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
-    \end{lstlisting}
-    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
-    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
-    comandos de test, está vez debería salirnos un mensaje ``OK''.
-
-    \item Clonar el repositorio desde github
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ git clone https://github.com/Gmatarrubia/dev_env_rpi_flutter_yocto.git
-        $ cd dev_env_rpi_flutter_yocto
-    \end{lstlisting}
-
-    \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
-    se puede utilizar la siguente opctión.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo su
-        (root)$ source checkFunctions
-        (root)$ check_vscode
-        (root)$ exit
-    \end{lstlisting}
-
-    \item Inicializar el entorno de docker.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ ./init-docker-env.sh
-    \end{lstlisting}
-
-    \item Fin de la instalación.
-\end{enumerate}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\textwidth]{imgs/yocto-docker-ready}
-    \caption[yocto docker ready]{Entorno de desarrollo Yocto listo.}
-    \label{imgs:yocto-docker-ready}
-\end{figure}
-
-\subsection{Desarrollo en container de vscode.}
-
-\paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
-usuario en caso de que docker no esté previamente instalado.
-
-\begin{enumerate}
-    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
-
-        $ sudo apt install curl
-        $ curl -fsSL https://get.docker.com -o get-docker.sh
-        $ sudo sh get-docker.sh
-        $ test $(id | grep -c docker) -eq 0 && sudo usermod -aG docker $(whoami) || echo "OK"
-    \end{lstlisting}
-    \textbf{Nota:} A continuación será necesario reiniciar para que se haga efectiva la
-    inclusión del usuario en el grupo de docker. Si volvemos a lanzar la línea de
-    comandos de test, está vez debería salirnos un mensaje ``OK''.
-
-    \item Clonar el repositorio desde github y entrar en el directorio.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ git clone https://github.com/Gmatarrubia/dev_env_rpi_flutter_yocto.git
-        $ cd dev_env_rpi_flutter_yocto
-    \end{lstlisting}
-
-    \item Instalar Visual Studio Code.
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo su
-        (root)$ source checkFunctions
-        (root)$ check_vscode
-        (root)$ exit
-    \end{lstlisting}
-
-    \item Abrir Visual Studio Code e instalar las extensiones necesarias. Para ello
-    abrir Vscode con el comando ``code'' en una terminal, y luego utilizar el atajo de
-    teclado \emph{Ctrl+p} e introducir el siguiente comando:
-    \begin{lstlisting}[style=cmd]
-        ext install ms-vscode-remote.vscode-remote-extensionpack
-    \end{lstlisting}
-    Repetir con la extensión de docker.
-    \begin{lstlisting}[style=cmd]
-        ext install ms-azuretools.vscode-docker
-    \end{lstlisting}
-    A continuación cerrar \gls{vscode}.
-
-    \item Abrir el repositorio con \gls{vscode}
-    \begin{lstlisting}[style=consola, numbers=left]
-        $ code .
-    \end{lstlisting}
-
-    \item Reabrir la carpeta en el container como nos sugerirá.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.55\textwidth]{imgs/dev-container}
-        \caption[Mensaje emergente en vscode]{Mensaje emergente en vscode.}
-        \label{imgs:vscode-devcontainer2}
-    \end{figure}
 
     \item Fin de la instalación.
 \end{enumerate}
@@ -458,7 +418,7 @@ virtual Ubunut 20.04 y seguir los consejos de la instalación en Linux de manera
     \item Siguiendo en la terminal de \gls{WSL2}, instalamos la herramienta git y clonamos
     el repositorio.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ sudo apt install git
+        $ sudo apt install -y git
         $ git clone https://github.com/Gmatarrubia/dev_env_rpi_flutter_yocto.git
     \end{lstlisting}
 
