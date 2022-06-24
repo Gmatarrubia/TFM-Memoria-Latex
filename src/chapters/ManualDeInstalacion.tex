@@ -7,10 +7,10 @@ seguir con independencia del estado previo del sistema. No se asume ningún esta
 \section{Consideraciones previas}
 
 \begin{itemize}
-    \item El sistema operativo y sus principales tecnologías y herramientas tienen
-    como base su uso en sistemas operativos GNU/Linux, concretamente la versión 20.04 de
-    la distribución de Ubuntu. Por lo que, a pesar de poder ser utilizados en cualquier
-    sistema, serán en éstos donde será más fácil y óptimo su uso.
+    \item El tecnologías y herramientas del entorno de desarrollo tienen como base
+    sistemas operativos GNU/Linux, concretamente la versión 20.04 de la distribución
+    de Ubuntu. Por lo que, a pesar de poder ser utilizados en cualquier sistema,
+    serán en éstos donde será más fácil y óptimo su uso.
 
     \item Al igual que sucede en otros capítulos de este documento, se van a diferenciar
     las dos partes lógicas que componen el proyecto software: el entorno Flutter y el
@@ -30,17 +30,25 @@ pasar sus test y compilarla para diferentes plataformas.
 \subsection{Instalación en sistemas operativos GNU/Linux}
 
 \paragraph{}Para la instalación de este entorno en un sistema operativo basado en
-la versión de Ubuntu 20.04 se podrá optar por tres estrategias: correr el entorno de
-forma nativa, utilizar el método basado en docker o utilizar la característica de
-desarrollo en container de Visual Studio Code, que sería una solución intermedia.
+la versión de Ubuntu 20.04 ó en la 22.04 se podrá optar por tres estrategias: correr
+el entorno de forma nativa, utilizar el método basado en docker o utilizar la característica
+de desarrollo en container de Visual Studio Code, que sería una solución intermedia.
+
+\paragraph{}La instalación basada en desarrollo en container de Vscode, es posiblemente
+el método más sencillo y rápido, tiene la ventaja que apenas modifica el sistema operativo
+host y que cualquier cambio futuro en el entorno se actualizará con sólo actualizar el
+propio repositorio. La instalación basada en docker, aunque conceptualmente es similar,
+está pensado para usarse en infraestructura y procesos automatizados. Por último, la opción
+nativa está recomendada para desarrolladores más avanzados que tengas permiso de administrador
+y quieran tener el control sobre las herramientas base.
 
 \subsection{Desarrollo en container de vscode.}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
-usuario en caso de que docker no esté previamente instalado.
+usuario en caso de que docker o Visual Studio Code no estén previamente instalados.
 
 \begin{enumerate}
-    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
+    \item Instalar \textbf{\gls{git}} (\emph{sólo si es necesario}).
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt install -y git
     \end{lstlisting}
@@ -57,9 +65,9 @@ usuario en caso de que docker no esté previamente instalado.
         $ check_docker
     \end{lstlisting}
     \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
-    script nos indicará si ésto fuera necesario. Si reiniciáramos, abririamos una
-    terminal, iríamos al directorio del repositorio y continuaríamos con el siguiente
-    paso.
+    script nos indicará si ésto fuera necesario. En caso de tener que reiniciar,
+    podríamos continuar la instalación abriendo de nuevo una terminal, yendo al directorio
+    del repositorio y reanudar la guía en el siguente paso.
 
     \item Instalar Visual Studio Code.
     \begin{lstlisting}[style=consola, numbers=left]
@@ -81,7 +89,7 @@ usuario en caso de que docker no esté previamente instalado.
     \end{figure}
 
     \item Fin de la instalación. En caso de que no \gls{vscode} no detecte el \gls{SDK}
-    reiniciar \gls{vscode} y volver a abrirlo y volver a dar a ``abrir en container''.
+    reiniciar \gls{vscode} y volver a abrirlo y volver a seleccionar en ``abrir en container''.
 \end{enumerate}
 
 \subsection{Entorno de desarrollo dockerizado.}
@@ -137,7 +145,7 @@ usuario en caso de que docker no esté previamente instalado.
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
 
 \begin{enumerate}
-    \item Instalar la herramienta \textbf{\gls{git}} de control de versiones.
+    \item Instalar \textbf{\gls{git}} (\emph{sólo si es necesario}).
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt install -y git
     \end{lstlisting}
@@ -260,15 +268,15 @@ la posibilidad de correr el entorno de manera nativa, de manera \emph{dockerizad
 mediante el desarrollo en container de \gls{vscode}.
 Ambos entornos se han diseñado para tener una instalación y usos parecidos y así que
 se mantenga una coherencia común y una experiencia de usuario parecida, reduciendo así
-la curva de aprendizaje y las barreras de entrada.Veamos la instalación de ambos métodos:
+la curva de aprendizaje y las barreras de entrada.
 
 \subsection{Desarrollo en container de vscode.}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
-usuario en caso de que docker no esté previamente instalado.
+usuario en caso de que docker o Visual Studio Code no estén previamente instalados.
 
 \begin{enumerate}
-    \item Instalar \textbf{\gls{git}} y \textbf{docker} (\emph{sólo si es necesario}).
+    \item Instalar \textbf{\gls{git}} (\emph{sólo si es necesario}).
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt install -y git
     \end{lstlisting}
@@ -285,9 +293,9 @@ usuario en caso de que docker no esté previamente instalado.
         $ check_docker
     \end{lstlisting}
     \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
-    script nos indicará si ésto fuera necesario. Si reiniciáramos, abririamos una
-    terminal, iríamos al directorio del repositorio y continuaríamos con el siguiente
-    paso.
+    script nos indicará si ésto fuera necesario. En caso de tener que reiniciar,
+    podríamos continuar la instalación abriendo de nuevo una terminal, yendo al directorio
+    del repositorio y reanudar la guía en el siguente paso.
 
     \item Instalar Visual Studio Code.
     \begin{lstlisting}[style=consola, numbers=left]
@@ -359,7 +367,7 @@ usuario en caso de que docker no esté previamente instalado.
 \paragraph{}\textbf{Nota:} Este método requiere permisos de \emph{sudo} o super usuario.
 
 \begin{enumerate}
-    \item Instalar la herramienta \textbf{\gls{git}} de control de versiones.
+    \item Instalar \textbf{\gls{git}} (\emph{sólo si es necesario}).
     \begin{lstlisting}[style=consola, numbers=left]
         $ sudo apt install -y git
     \end{lstlisting}
