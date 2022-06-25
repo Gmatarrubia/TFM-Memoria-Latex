@@ -176,7 +176,7 @@ usuario en caso de que docker no esté previamente instalado.
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsection{Instalación en sistemas operativos Windows}
+\subsection{Instalación en sistemas operativos Windows}\label{sec:install_win_flutter}
 
 \paragraph{}Tanto Visual Studio Code, como el \gls{SDK} de Flutter tienen versiones
 nativas para Windows. Aunque en principio, Flutter podría trabajar indistintamente en
@@ -240,14 +240,46 @@ trabajar son:
     \end{lstlisting}
 
     \item Abrir un entorno \gls{WSL2} en Visual Studio Code y abrir la carpeta del repositorio
-    previamente descargado.
-    blabla - insertar captura pantalla.
+    previamente descargado tal y como muestran las siguientes imágenes.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\textwidth]{imgs/vscode-wsl2}
+        \caption[Botón para abrir Vscode en WSL2.]{Botón para abrir Vscode en WSL2.}
+        \label{imgs:vscde-wsl2}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\textwidth]{imgs/vscode-wsl2-2}
+        \caption[Abrir una carpeta.]{Abrir una carpeta.}
+        \label{imgs:vscde-wsl2-2}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\textwidth]{imgs/vscode-wsl2-3}
+        \caption[Selección de carpeta.]{Selección de carpeta.}
+        \label{imgs:vscde-wsl2-3}
+    \end{figure}
 
     \item Instalar la extension de Visual Studio Code de Flutter de la misma manera que
     en el paso anterior.
     \begin{lstlisting}[style=cmd]
         ext install Dart-Code.flutter
     \end{lstlisting}
+
+    \item Ejecutar el script de instalación de paquetes.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ sudo ./installDevEnv.sh
+    \end{lstlisting}
+
+    \item Ejecutar el script de obtención de dependencias.
+    \begin{lstlisting}[style=consola, numbers=left]
+        $ ./getSources.sh
+    \end{lstlisting}
+
+    \item Reiniciar Visual Studio Code.
 
     \item Fin de la instalación.
 \end{enumerate}
@@ -380,7 +412,7 @@ usuario en caso de que docker no esté previamente instalado.
     \item Ejecutar el script de instalación de paquetes.
     \begin{lstlisting}[style=consola, numbers=left]
         $ cd dev_env_rpi_flutter_yocto
-        $ sudo ./installDevDeps.sh
+        $ sudo ./installDevEnv.sh
     \end{lstlisting}
 
     \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
@@ -397,7 +429,7 @@ usuario en caso de que docker no esté previamente instalado.
 
 \paragraph{}\textbf{Nota:} Este método es una prueba de concepto y el rendimiento puede
 verse visiblemente afectado. Como opción alternativa se aconseja crear una máquina
-virtual Ubunut 20.04 y seguir los consejos de la instalación en Linux de manera nativa.
+virtual Ubuntu 22.04 y seguir los consejos de la instalación en Linux de manera nativa.
 
 \paragraph{}\textbf{Nota 2:} Se requieren permisos de administrador.
 
@@ -441,13 +473,32 @@ virtual Ubunut 20.04 y seguir los consejos de la instalación en Linux de manera
     \end{lstlisting}
 
     \item Abrir un entorno \gls{WSL2} en Visual Studio Code y abrir la carpeta del repositorio
-    previamente descargado.
-    blabla - insertar captura pantalla.
+    previamente descargado tal y como muestran las siguientes imágenes.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\textwidth]{imgs/vscode-wsl2}
+        \caption[Botón para abrir Vscode en WSL2.]{Botón para abrir Vscode en WSL2.}
+        \label{imgs:vscode-wsl2}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\textwidth]{imgs/vscode-wsl2-2}
+        \caption[Abrir una carpeta.]{Abrir una carpeta.}
+        \label{imgs:vscode-wsl2-2}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\textwidth]{imgs/vscode-wsl2-3}
+        \caption[Selección de carpeta.]{Selección de carpeta.}
+        \label{imgs:vscode-wsl2-3}
+    \end{figure}
 
     \item Ejecutar el script de instalación de paquetes.
     \begin{lstlisting}[style=consola, numbers=left]
-        $ cd dev_env_rpi_flutter_yocto
-        $ sudo ./installDevDeps.sh
+        $ sudo ./installDevEnv.sh
     \end{lstlisting}
 
     \item Fin de la instalación.
