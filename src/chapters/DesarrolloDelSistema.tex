@@ -3,23 +3,175 @@
 \paragraph{}En este capítulo vamos a conectar el uso teórico del entorno de desarrollo
 mostrado en el capítulo \ref{sec:GuiaDeUso}, con el diseño software y la arquitectura de
 la aplicación meteorológica del capítulo \ref{sec:AplicacionMeteorologica}. Lo haremos
-explicando cómo ha sido el desarrollo de la aplicación en con el entorno de desarrollo.
+explicando cómo ha sido el desarrollo de la aplicación con el entorno de desarrollo.
 
-\section{Ejecutando la aplicación de inicio}
+\section{Planificación del Sprint y tablón Kanban}
 
-\paragraph{}Blabla
+\paragraph{}Como en cualquier desarrollo lo primero es planificar. A continuación se
+muestran unas tablas Kanban con las tareas del sprint que vamos a explicar cómo se
+han desarrollado.
 
-\section{Generación de imagen de disco y prueba en hardware.}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{| p{0.3\textwidth} | p{0.3\textwidth} | p{0.3\textwidth} |}
+    \hline
+    \multicolumn{3}{|c|}{Equipo de software de sistema} \\
+    \hline
+    To Do & In Progress & Done \\
+    \hline
+    \hline
+    &  & Lanzar automáticamente la aplicación al inicio \\
+    Ocultar la salida del kernel al inicio &  &  \\
+    \hline
+    \hline
+    \multicolumn{3}{|c|}{Equipo de UI/UX} \\
+    \hline
+    To Do & In Progress & Done \\
+    \hline
+    \hline
+    Modo día y modo noche &  & \\
+    \hline
+\end{tabular}
+\caption{Tablón Kanban}
+\label{tab:Kanban}
+\end{center}
+\end{table}
 
-\paragraph{}Blabla
+\section{Generación de imagen de disco con características de debug y prueba en hardware.}
 
-\section{Primeros cambios y depuración "Hot debbuging".}
+\paragraph{}Esta prueba consiste en probar las características de debug en la
+Raspberrry Pi, dichas características incluyen paquetes y configuraciones que no deben
+estar presentes en producción pero que representan una ventaja a la hora de depurar.
+Para esta prueba sólo vamos a necesitar el entorno de Yocto.
 
-\paragraph{}Blabla
+\paragraph{}Comenzamos abriendo con una terminal el directorio del entorno Yocto,
+suponiendo que ya tengamos el entorno instalado, y utilizamos las siguientes sentencias:
 
-\section{Ejecutando los test unitarios.}
+\begin{lstlisting}[style=consola, numbers=left]
+    # Vamos realizar una primera compilacion para generar todas las tools del SDK
+    $ ./build.sh --debug -wi
 
-\paragraph{}Blabla
+    # Introducimos los datos de nuestra red Wi-Fi.
+    # Esperamos a que termine, esto puede durar varias horas
+
+    $ ./getImageReady2Flash.sh
+\end{lstlisting}
+
+\paragraph{}Después de eso introducimos una tarjeta de memoria en el ordenador, y
+suponiendo que la tarjeta es detectada como el dispositivo ``/dev/sdb'', realizamos
+las siguientes operaciones:
+
+\paragraph{}\textbf{Nota:} Mira bien qué dispositivo asigna tu ordenador a la tarjeta
+de memoria, usar un dispositivo incorrecto podría conllevar la pérdida de datos
+importantes.
+
+\begin{lstlisting}[style=consola, numbers=left]
+    # Umount de las particiones de la uSD
+    $ sudo umount /dev/sdb*
+
+    $ sudo dd if=disk.img of=/dev/sdb bs=4M
+    $ sync
+\end{lstlisting}
+
+\paragraph{}Ya estaríamos listos para extraer la memoria, colocarla en la ranura de
+la Raspberry Pi y encenderla.
+
+\paragraph{}Una vez encendida la Raspberry Pi, esta se conectará a internet mediante
+el puerto ethernet o bien mediante Wi-Fi si hemos configurado bien las configuraciones.
+Para comprobar que hemos activado bien las características de depuración intentaremos
+abrir una sesión ssh con el usuario ``root'' sin contraseña con:
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ ssh root@raspberrypi3.local
+\end{lstlisting}
+
+\paragraph{}Si obtenemos el acceso, la prueba habrá sido satisfactoria.
+
+\section{Adecuación de la hora al huso horario de la localización.}
+
+\paragraph{}Vamos a mezclar todos los entornos para esta tarea, desarrollando, probando
+el local y en hardware. Lo primero es ir al entorno de desarrollo Yocto. Una vez allí,
+abrir una terminal y realizar las siguientes operaciones:
+
+\begin{lstlisting}[style=consola, numbers=left]
+    # Vamos realizar una primera compilacion para generar todas las tools del SDK
+    $ ./build.sh --debug
+
+    # Abrimos una terminal interactiva
+    $ ./build.sh --debug --shell
+
+    # Incluimos el codigo del entorno Flutter en el eSDK
+    $ devtool modify rpi-weather
+\end{lstlisting}
+
+\paragraph{}Con esto tendremos el código del entorno de desarrollo Flutter descargado
+en la carpeta raspberrypi3/workspace/sources. Podremos por tanto, abrir una instancia
+de \Gls{vscode} en la carpeta con las fuentes de Flutter.
+
+\paragraph{}Una vez abierta la instancia de \Gls{vscode} podremos seguir las instruciones
+del capítulo \href{sec:ManualDeInstalacion}{Manual de Instalación}. Con las dependencias
+descargadas y el entorno preparado, podremos empezar a desarrollar.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/dev1}
+    \caption[Diff de los cambios.]{Diff de los cambios.}
+    \label{imgs:diff-code}
+\end{figure}
+
+\paragraph{}Cómo podemos ver en la imágen \ref{imgs:diff-code} se han realizado algunos
+cambios en el código. Y la imagen muestra la comparativa entre del archivo antes y después
+de los cambios.
+
+\paragraph{}Iremos compilando y depurando como es habitual en el desarrollo de cualquier
+característica. Cuando quedemos satisfechos con los resultados y nos cercioremos en la
+medida de lo posible de que no haya bugs, probaremos la aplicación en el hardware.
+
+\paragraph{}\textbf{Nota:} Es importante haber preparado previamente la imagen del sistema
+con las características de debug.
+
+\paragraph{}Antes del despliegue tendremos que loguearnos por ssh en la Raspberry Pi 3
+y para el servicio que corre la aplicación flutter.
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ systemctl stop flutter-app.service
+\end{lstlisting}
+
+\paragraph{}También tendremos que recuperar la terminal de la shell interactiva que habíamos
+abierto interactivamente. Con esa terminal, compilaremos la aplicación con el engine
+embebido y luego realizamos el despliegue con los sigueintes comandos:
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ devtool build rpi-weather
+    $ devtool deploy-target rpi-weather root@<IP>
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/dev3}
+    \caption[Captura del despliegue.]{Captura del despliegue.}
+    \label{imgs:deploy-target}
+\end{figure}
+
+\paragraph{}Una vez el despliegue se haya completado, volveremos a lanzar el servicio
+de la aplicación flutter en la sesión ssh.
+
+\begin{lstlisting}[style=consola, numbers=left]
+    $ systemctl start flutter-app.service
+\end{lstlisting}
+
+\paragraph{}Ya estaríamos listos para probar en la aplicación en hardware. Cuando hayamos
+realizado las pruebas pertinentes, será momento de confirmar los cambios en \gls{git}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/dev2}
+    \caption[Confimación de los cambios.]{Confimación de los cambios.}
+    \label{imgs:commit}
+\end{figure}
+
+\paragraph{}Entonces, se ejecutarán los test unitarios de manera automatizada y nos
+llegará un reporte en caso de fallo.
 
 %las referencias a artículos se ponen con \cite,
 %las referencias a glosario \gls,
