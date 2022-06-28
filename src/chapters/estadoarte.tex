@@ -38,7 +38,7 @@ hardware simulado.
 \paragraph{} Este proyecto que fue fundado en 2010 con el apoyo de grandes multinacionales
 y organizaciones. Destaca la estrecha colaboracioón con \emph{OpenEmbedded}, tomando de
 ellos la mayor parte del \emph{OpenEmbedded Project} y su motor de generación (\emph{build
-engine}), bitbake.
+engine}), \textbf{bitbake}.
 
 \paragraph{} Como parte del proyecto, con cada versión de Yocto, se presenta una versión
 de Poky. Poky, es una distribuición de referencia, a partir de la cuál, realizar las
@@ -73,6 +73,16 @@ código común entre recetas pensadas para ser reutilizadas.
 \paragraph{}En cuanto a las opciones de testing, Yocto está dispone de test en tiempo
 de compilación así como la disposición de arrancar las imágenes generadas en una máquina
 virtual QEMU \ref{sec:qemu}.
+
+\subsection{Kas}\label{sec:kas}
+
+\paragraph{}Kas es una herramienta pensada para configurar proyectos basados en bitbake
+de una manera sencilla. Kas proveé un \emph{wrapper} de bitbake con comandos de más alto
+nivel. Resuelve las tareas de resolución de dependencias, de configuración y de
+generación que usualmente suelen hacerse a mano y dejarse documentados. Yocto
+\ref{sec:yocto} utiliza bitbake como motor de generación, por tanto, Kas puede ser
+utilizado en proyectos basados en Yocto
+\cite{kas}
 
 \section{QEMU}\label{sec:qemu}
 
