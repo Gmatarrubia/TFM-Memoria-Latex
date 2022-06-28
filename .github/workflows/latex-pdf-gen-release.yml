@@ -1,4 +1,4 @@
-name: LaTeX - PDF Generation
+name: Asset gen on tag
 
 # Controls when the workflow will run
 on:
