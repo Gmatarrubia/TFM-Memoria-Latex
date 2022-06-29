@@ -3,7 +3,7 @@
 \paragraph{}En este capítulo vamos a conectar el uso teórico del entorno de desarrollo
 mostrado en el capítulo \ref{sec:GuiaDeUso}, con el diseño software y la arquitectura de
 la aplicación meteorológica del capítulo \ref{sec:AplicacionMeteorologica}. Lo haremos
-explicando cómo ha sido el desarrollo de la aplicación con el entorno de desarrollo.
+explicando cómo hemos desarrollado varias tareas.
 
 \section{Planificación del Sprint y tablón Kanban}
 
@@ -19,23 +19,24 @@ han desarrollado.
     \hline
     To Do & In Progress & Done \\
     \hline
-    \hline
-    &  & Lanzar automáticamente la aplicación al inicio \\
-    Ocultar la salida del kernel al inicio &  &  \\
+    &  & Lanzar automáticamente la aplicación al inicio. \\
+    Generación de imagen de disco con características de debug y prueba en hardware. & & \\
     \hline
     \hline
     \multicolumn{3}{|c|}{Equipo de UI/UX} \\
     \hline
     To Do & In Progress & Done \\
     \hline
-    \hline
-    Modo día y modo noche &  & \\
+    Adecuación de la hora al huso horario de la localización. &  & \\
     \hline
 \end{tabular}
 \caption{Tablón Kanban}
 \label{tab:Kanban}
 \end{center}
 \end{table}
+
+\paragraph{}Teniendo claras las tareas de este sprint, vamos a proceder a realizarlas
+y a documentar el proceso.
 
 \section{Generación de imagen de disco con características de debug y prueba en hardware.}
 
@@ -45,7 +46,69 @@ estar presentes en producción pero que representan una ventaja a la hora de dep
 Para esta prueba sólo vamos a necesitar el entorno de Yocto.
 
 \paragraph{}Comenzamos abriendo con una terminal el directorio del entorno Yocto,
-suponiendo que ya tengamos el entorno instalado, y utilizamos las siguientes sentencias:
+suponiendo que ya tengamos el entorno instalado. Aplicamos los cambios pertinentes
+en el entorno para habilitar la posibilidad de incluir las características de depuración
+con un argumento en el script de build.sh. Los cambios se pueden ver en forma de parche
+en el siguiente cuadro:
+
+\begin{lstlisting}[style=consola]
+    diff --git a/build.sh b/build.sh
+    index 4ab039b..fed2664 100755
+    --- a/build.sh
+    +++ b/build.sh
+    @@ -8,6 +8,7 @@ __verbose=
+     __bitbake_cmd=
+     __only_shell=
+     __wifi_settings_interactive=
+    +__debug=
+     while (( $# )); do
+         case ${1,,} in
+             -v|--verbose)
+    @@ -26,6 +27,9 @@ while (( $# )); do
+             -wi|--wifi-interactive)
+                 __wifi_settings_interactive=1
+                 ;;
+    +        -d|--debug)
+    +            __debug=":${repoPath}/debug.yml"
+    +            ;;
+             -h|--help)
+                 print_help
+                 exit 0
+    @@ -80,15 +84,15 @@ fi
+
+     if [ -n "${__only_shell}" ]
+     then
+    -    kas shell -E "${CONF_FILE}"
+    +    kas shell -E "${CONF_FILE}${__debug}"
+         exit 0
+     fi
+
+     ###Enable option for only start
+     if [ -z "${__bitbake_cmd[*]}" ]
+     then
+    -    time kas build "${CONF_FILE}"
+    +    time kas build "${CONF_FILE}${__debug}"
+     else
+         echo "Executing command: ${__bitbake_cmd[*]}"
+    -    time kas shell "${CONF_FILE}" -c "${__bitbake_cmd[@]}"
+    +    time kas shell "${CONF_FILE}${__debug}" -c "${__bitbake_cmd[@]}"
+     fi
+    diff --git a/debug.yml b/debug.yml
+    new file mode 100644
+    index 0000000..5baec50
+    --- /dev/null
+    +++ b/debug.yml
+    @@ -0,0 +1,6 @@
+    +header:
+    +  version: 8
+    +
+    +local_conf_header:
+    +  debug_features: |
+    +    EXTRA_IMAGE_FEATURES += "debug-tweaks"
+\end{lstlisting}
+
+\paragraph{}Con los cambios realizados, abrimos una terminal e introducimos las siguientes
+sentencias:
 
 \begin{lstlisting}[style=consola, numbers=left]
     # Vamos realizar una primera compilacion para generar todas las tools del SDK
