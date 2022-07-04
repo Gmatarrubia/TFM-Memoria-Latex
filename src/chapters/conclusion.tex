@@ -1,4 +1,4 @@
-\chapter{Conclusiones}\label{sec:conclusiones}
+\chapter{Conclusiones.}\label{sec:conclusiones}
 
 \paragraph{}Tras haber presentado los resultados del proyecto, vamos a terminar extrayendo
 los aprendizajes y conclusiones más importantes. Para ello se va a ir repasando cada
@@ -7,7 +7,7 @@ Se continuará hablando sobre los aprendizajes que este proyecto ha supuesto. Y 
 último se van a presentar las opciones principales que se plantean como consecución al
 trabajo realizado.
 
-\section{Cumplimiento de Objetivos principales}
+\section{Cumplimiento de Objetivos principales.}
 
 \paragraph{\checkmark Diseño e implementación del entorno de desarrollo:} Objetivo
 cumplido, hemos construido un entorno de desarrollo totalmente funcional. Incluso se
@@ -25,20 +25,20 @@ en cada caso.
 
 \paragraph{\checkmark Diseño e implementación del software de sistema:} Se ha conseguido
 un software de sistema que ha resultado ser una distribución basada en linux generada
-con Yocto, totalmente funcional, que permita la ejecución y uso de la aplicación embebida.
+con Yocto, totalmente funcional, que permite la ejecución y uso de la aplicación embebida.
 
 \paragraph{\checkmark Diseño e implementación de una aplicación de meteorología (frontend y
 backend) de características básicas:} La aplicación que hemos llamado \emph{Rpi Weather}
 es una aplicación monolítica (frontend y backend) que cumple con los casos de uso
-requisitados. La elección de esta aplicación tenía intención de ser un demostrador y
-como tal considero que cumple perfectamente.
+requisitados. La elección de esta aplicación tenía la intención de ser un demostrador y
+como tal considero que lo cumple perfectamente.
 
-\paragraph{\checkmark Procesos de testing y deployment de software manuales:}Hemo definido
+\paragraph{\checkmark Procesos de testing y deployment de software manuales:}Hemos definido
 sendas acciones para cada entorno y hemos conseguido hacerlas de manera manual. De esta
 forma el desarrollador toma la responsabilidad de probar sus cambios antes de intentar
 integrarlos.
 
-\section{Cumplimiento de Objetivos secundarios}
+\section{Cumplimiento de Objetivos secundarios.}
 
 \paragraph{\checkmark Análisis y justificación de las decisiones tomadas:}Considero que
 a lo largo de la memoria se han ido explicando las decisiones que se han ido tomando y
@@ -47,7 +47,7 @@ haber podido convencer al lector de probar por su cuenta el entorno.
 
 \paragraph{\checkmark Uso de herramientas de código abierto:} Objetivo cumplido, a continuación
 desgloso un listado de todas las herramientas utilizadas así como las licencias que
-utilizan.
+usan.
 
 \begin{table}[H]
     \begin{center}
@@ -94,18 +94,18 @@ implementar.
     \label{imgs:github-actions-tests}
 \end{figure}
 
-\section{Aprendizajes}
+\section{Aprendizajes.}
 
 \paragraph{}A nivel técnico, puedo asegurar que la realización de este trabajo a supuesto
 mucho aprendizaje para mí. Aunque he tenido experiencia previa utilizando la mayoría
 de las tecnologías, nunca lo había hecho desde cero. Eso ha hecho que me diese cuenta
 de los desafíos de empezar proyectos con las tecnologías utilizadas, también me ha dado
 nuevas ideas, ya que al no partir de ninguna decisión previa se plantean consieraciones
-que había estado ocultas.
+que habían estado ocultas.
 
 \paragraph{}A nivel de gestión y negocio, he tenido la oportunidad de aplicar mis,
 todavía, pequeños conocimientos para la toma de decisiones técnicas y ser más eficiente
-o pragmático. Eso permite darte cuenta de que las decisiones técnicas sin perspectiva
+o pragmático. Eso me ha permitido darme cuenta de que las decisiones técnicas sin perspectiva
 de negocio pueden ser viables técnicamente pero no factibles. Al final, incluso la
 gestión del tiempo propio tiene asociado un coste de oportunidad.
 
@@ -120,18 +120,18 @@ de consejos y afirmaciones:
     \item Bitbake es una herramienta potentísima para la gestión y configuración de tareas
     y puede tener sentido usarla más allá de Yocto.
     \item Kas es una herramienta que añade una capa de más alto nivel a bitbake. Aunque
-    no es realmente necesario, resulta muy conveniente para la construcción automatizada.
-    \item Kas puede ser sustituta de ``repo'', pero tiene mucha funcionalidad añadida.
-    \item Aunque construir imagenes de Yocto desde cero es increiblemente lento, gestionar
-    gestionar la caché sstate es vital para evitar generar lo que no cambió de generaciones
-    posteriores.
+    no es realmente necesaria, resulta muy conveniente para la construcción automatizada.
+    \item Kas puede ser sustituta de ``repo'' y además tiene mucha funcionalidad añadida.
+    \item Aunque construir imágenes de Yocto desde cero es increiblemente lento,
+    gestionar la caché sstate es vital para evitar compilar de nuevo lo que no cambia de las generaciones
+    anteriores.
     \item Usar la ccaché en Yocto también es importante cuando alguna receta falla, ya
     que la compilación de dicha receta no empieza desde el principio.
     \item No es muy necesario subir una imagen de Docker a un registry para personalizar
     un Ubuntu, al final, sólo se hace lenta la construcción, una vez construida la imagen
     lanzar contenedores es sumamente rápido.
-    \item Es más cómodo de trabajar con un entorno dockerizado de lo que parece, llega
-    a ser incluso transparente al usuario, ya que puedo no percibir que está trabajando
+    \item Es más cómodo trabajar con un entorno dockerizado de lo que parece, llega
+    a ser incluso transparente al usuario, ya que se puede no percibir que se está trabajando
     dentro de un container.
     \item Se puede desarrollar una aplicación de escritorio para Flutter cómodamente
     usando Windows Subsystem for Linux 2 (WSL2).
@@ -142,21 +142,20 @@ de consejos y afirmaciones:
 
 \end{itemize}
 
-\section{Continuación del desarrollo}
+\section{Continuación del desarrollo.}
 
 \paragraph{}Un proyecto normalmente va asociado a un contrato entre empresas o a una
-fecha límite, cuando esto existe, se puede consider el trabajo entregado y el proyecto
+fecha límite, cuando esto existe, se puede considerar el trabajo entregado y el proyecto
 finalizado. Es posible que en ocasiones el proyecto tenga continuación con otros proyectos
-que tomen como punto inicial el momento de entre del proyecto anterior o con ampliaciones
-del propio proyecto. También suele haber cierta continuación a modo de soporte, ya que
+o con ampliaciones del propio proyecto.
+También suele haber cierta continuación a modo de soporte, ya que
 rara vez un sistema debería quedar sin soporte, al menos durante un periodo de tiempo
 razonable. Existen actualizaciones de dependencias, cambios de infraestuctura, cambios
 de negocio, brechas de seguridad y un sin fin de asuntos que seguir atendiendo una vez
 el proyecto está entregado.
 
 \paragraph{}Dejando a un lado la continuación del mero soporte, si existiesen proyectos
-de continuación bajo mi critério esto deberían ser las características que deberían
-incluir:
+de continuación bajo mi critério estas deberían ser las características a incluir:
 
 \begin{itemize}
     \item Compatibilidad completa con sistemas operativos MacOS.
@@ -167,7 +166,7 @@ incluir:
     \item Ampliación de las capacidades de la aplicación.
         \subitem Pantallas con información más detallada.
         \subitem Previsión de las próximas horas.
-        \subitem Cambio del tema a según se esté de día o de noche.
+        \subitem Cambio del tema según se esté de día o de noche.
         \subitem Modo ahorro de energía.
         \subitem Registro de usuario.
     \item Upgrade del hardware a una Raspberry Pi 4.

@@ -4,10 +4,10 @@
 para cada uno de los principales sistemas operativos. Los pasos descritos se podrán
 seguir con independencia del estado previo del sistema. No se asume ningún estado previo.
 
-\section{Consideraciones previas}
+\section{Consideraciones previas.}
 
 \begin{itemize}
-    \item El tecnologías y herramientas del entorno de desarrollo tienen como base
+    \item Las tecnologías y herramientas del entorno de desarrollo tienen como base
     sistemas operativos GNU/Linux, concretamente la versión 20.04 de la distribución
     de Ubuntu. Por lo que, a pesar de poder ser utilizados en cualquier sistema,
     serán en éstos donde será más fácil y óptimo su uso.
@@ -16,36 +16,36 @@ seguir con independencia del estado previo del sistema. No se asume ningún esta
     las dos partes lógicas que componen el proyecto software: el entorno Flutter y el
     entorno Yocto.
 
-    \item La inicaciones de este capítulo parten de sistemas con instalaciones por defecto
+    \item La indicaciones de este capítulo parten de sistemas con instalaciones por defecto
     y sin modificar, actualizados a la última versión disponible. Es posible que algún
-    paso pueda variar, se pueda prescindir de algún paso, o que se requiera algún paso
+    paso pueda variar, se pueda prescindir de algún paso, o que se requiera alguno
     adicional, en función del tipo de instalación o versión.
 \end{itemize}
 
-\section{Instalación del entorno Flutter}\label{sec:entflutter}
+\section{Instalación del entorno Flutter.}\label{sec:entflutter}
 
 \paragraph{}En el entorno Flutter vamos a ser capaces de desarrollar la aplicación,
 pasar sus test y compilarla para diferentes plataformas.
 
-\subsection{Instalación en sistemas operativos GNU/Linux}
+\subsection{Instalación en sistemas operativos GNU/Linux.}
 
 \paragraph{}Para la instalación de este entorno en un sistema operativo basado en
 la versión de Ubuntu 20.04 ó en la 22.04 se podrá optar por tres estrategias: correr
-el entorno de forma nativa, utilizar el método basado en docker o utilizar la característica
+el entorno de forma nativa, utilizar el método basado en Docker o utilizar la característica
 de desarrollo en container de Visual Studio Code, que sería una solución intermedia.
 
 \paragraph{}La instalación basada en desarrollo en container de Vscode, es posiblemente
-el método más sencillo y rápido, tiene la ventaja que apenas modifica el sistema operativo
+el método más sencillo y rápido, tiene la ventaja de que apenas modifica el sistema operativo
 host y que cualquier cambio futuro en el entorno se actualizará con sólo actualizar el
-propio repositorio. La instalación basada en docker, aunque conceptualmente es similar,
-está pensado para usarse en infraestructura y procesos automatizados. Por último, la opción
-nativa está recomendada para desarrolladores más avanzados que tengas permiso de administrador
+propio repositorio. La instalación basada en Docker, aunque conceptualmente es similar,
+está pensada para usarse en infraestructura y procesos automatizados. Por último, la opción
+nativa está recomendada para desarrolladores más avanzados que tengan permiso de administrador
 y quieran tener el control sobre las herramientas base.
 
 \subsection{Desarrollo en container de vscode.}
 
 \paragraph{}\textbf{Nota:} Este método podría requerir permisos de \emph{sudo} o super
-usuario en caso de que docker o Visual Studio Code no estén previamente instalados.
+usuario en caso de que Docker o Visual Studio Code no estén previamente instalados.
 
 \begin{enumerate}
     \item Instalar \textbf{\gls{git}} (\emph{sólo si es necesario}).
@@ -88,8 +88,8 @@ usuario en caso de que docker o Visual Studio Code no estén previamente instala
         \label{imgs:vscode-devcontainer}
     \end{figure}
 
-    \item Fin de la instalación. En caso de que no \gls{vscode} no detecte el \gls{SDK}
-    reiniciar \gls{vscode} y volver a abrirlo y volver a seleccionar en ``abrir en container''.
+    \item Fin de la instalación. En caso de que \gls{vscode} no detecte el \gls{SDK},
+    reiniciar \gls{vscode} y abrirlo y volver a seleccionar en ``abrir en container''.
 \end{enumerate}
 
 \subsection{Entorno de desarrollo dockerizado.}
@@ -103,14 +103,14 @@ usuario en caso de que docker no esté previamente instalado.
         $ sudo apt install -y git
     \end{lstlisting}
 
-    \item Clonar el repositorio desde github
+    \item Clonar el repositorio desde github.
     \begin{lstlisting}[style=consola, numbers=left]
         $ git clone https://github.com/Gmatarrubia/rpi_weather.git
         $ cd rpi_weather
     \end{lstlisting}
 
     \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
-    se puede utilizar la siguente opctión.
+    se puede utilizar la siguente opción.
     \begin{lstlisting}[style=consola, numbers=left]
         $ source checkFunctions.sh
         $ check_vscode
@@ -122,7 +122,7 @@ usuario en caso de que docker no esté previamente instalado.
         $ ./init-docker-env.sh
     \end{lstlisting}
     \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
-    script nos indicará si ésto fuera necesario. Si reiniciamos, sería necesario volver
+    script nos indicará si ésto fuera necesario. Si reiniciamos, habría que volver
     a repetir este último paso para que la instalación continue.
 
     \item Ejecutar el script de obtención de dependencias.
@@ -167,7 +167,7 @@ usuario en caso de que docker no esté previamente instalado.
     \end{lstlisting}
 
     \item (Opcional) En caso de necesitar instalar Visual Studio Code para el desarrollo,
-    se puede utilizar la siguente opctión.
+    se puede utilizar la siguente opción.
     \begin{lstlisting}[style=consola, numbers=left]
         $ source checkFunctions.sh
         $ check_vscode
@@ -176,7 +176,7 @@ usuario en caso de que docker no esté previamente instalado.
     \item Fin de la instalación.
 \end{enumerate}
 
-\subsection{Instalación en sistemas operativos Windows}\label{sec:install_win_flutter}
+\subsection{Instalación en sistemas operativos Windows.}\label{sec:install_win_flutter}
 
 \paragraph{}Tanto Visual Studio Code, como el \gls{SDK} de Flutter tienen versiones
 nativas para Windows. Aunque en principio, Flutter podría trabajar indistintamente en
@@ -289,20 +289,20 @@ trabajar son:
 \paragraph{}\emph{De momento, la instalación en sistemas MacOS no es posible ya que
 existen una serie de pequeñas incompatibilidades en el repositorio. Estas
 incompatibilidades pueden arreglarse en el futuro o se pueden gestionar con una rama
-de desarrollo en Mac a parte. De momento, lo más recomendable es crear una máquina
+de desarrollo en Mac aparte. De momento, lo más recomendable es crear una máquina
 virtual Ubuntu 22.04 y utilizar la instalación nativa.}
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Instalación del entorno Yocto}
+\section{Instalación del entorno Yocto.}
 
-\subsection{Instalación en sistemas operativos GNU/Linux}
+\subsection{Instalación en sistemas operativos GNU/Linux.}
 
 \paragraph{}Al igual que sucedía con el entorno de Flutter \ref{sec:entflutter}, existe
 la posibilidad de correr el entorno de manera nativa, de manera \emph{dockerizada} o
 mediante el desarrollo en container de \gls{vscode}.
-Ambos entornos se han diseñado para tener una instalación y usos parecidos y así que
+Ambos entornos se han diseñado para tener una instalación y usos parecidos y de este modo que
 se mantenga una coherencia común y una experiencia de usuario parecida, reduciendo así
 la curva de aprendizaje y las barreras de entrada.
 
@@ -385,7 +385,7 @@ usuario en caso de que docker no esté previamente instalado.
         $ ./init-docker-env.sh
     \end{lstlisting}
     \textbf{Nota:} Después de este paso podría ser necesario reiniciar, la salida del
-    script nos indicará si ésto fuera necesario. Si reiniciamos, sería necesario volver
+    script nos indicará si ésto fuera necesario. Si reiniciamos, deberíamos volver
     a repetir este último paso para que la instalación continue.
 
     \item Fin de la instalación.

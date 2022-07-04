@@ -18,7 +18,7 @@ demasiado el alcance que se prentende en este trabajo, este capítulo se va a li
 describir la relación del entorno de desarrollo con los sistemas \gls{CI/CD}. Cualquier
 arquitectura de la infraestructura es pura expeculación y no será probada a nivel práctico.}
 
-\section{Control de versiones}
+\section{Control de versiones.}
 
 \paragraph{}El control de versiones en este entorno de desarrollo se realiza mediante
 \gls{git}. \Gls{git} es una herramienta de control de versiones gratuita, multiplataforma que
@@ -42,7 +42,7 @@ ser implementados en función de la naturaleza del proyecto, de la cantidad de c
 sufre el código, la metodología de desarrollo de la empresa, de la relación con el
 cliente, etc.
 
-\subsection{Ciclo de vida del desarrollo software}
+\subsection{Ciclo de vida del desarrollo software.}
 
 \paragraph{}Como se puede apreciar en la imagen \ref{imgs:recipe-rpi-weather-1} cada
 vez que se haga un \gls{fetch} de Rpi Weather, se va a descargar lo último que haya en la
@@ -61,7 +61,7 @@ nuestro ejemplo, vamos a considerar la rama \emph{main} como una rama de release
 
 \paragraph{}Yocto admite tener tanto fuentes locales, como fuentes en servidores. Por
 eso mismo, para el desarrollo de la aplicación flutter se propone el uso de los
-siguiente patrones de branching, explicando sus fundamentos.
+siguientes patrones de branching, explicando sus fundamentos.
 
 \paragraph{Política de branching GitHub-Flow:}
 \paragraph{}Está política de branching agrupa unos
@@ -107,16 +107,16 @@ negocio las que decidirán que versión desplegar a producción de entre todas l
 
 \paragraph{Patrón Feature branch:} Una feature branch se utilizará para conjuntos de
 cambios que tengan una relación lógica. Los objetivos de una feature branch, deben ser
-medibles y finitos. De menera que cada característica nueva del programa, cada bug, etc
+medibles y finitos. De manera que cada característica nueva del programa, cada bug, etcétera,
 esté en su propia rama exclusiva.
 
-\section{Infraestructura}\label{sec:infraestructura}
+\section{Infraestructura.}\label{sec:infraestructura}
 
 \paragraph{}Normalmente, los sistemas de control de versiones están ``supervisados''
 por equipos de compilación, analizadores estáticos y dinámicos, despligue de artefactos,
 etc. Es decir, que existe una infraestructura que trabaja de forma automatizada con
 nuestro código y los cambios que le introducimos. Esta infraestructura puede estar
-en local, \gls{on premises} o en cloud. Lo único que cambia en cada caso es la hubicación
+en local, \gls{on premises} o en cloud. Lo único que cambia en cada caso es la ubicación
 física del \emph{hardware}, así como la responsabilidad de mantener el servicio.
 
 \paragraph{}Para asegurar la mantenibilidad de esta infraestructura, así como para aplicar
@@ -127,7 +127,7 @@ y administrado a la vez y de igual manera que el propio código que contiene.
 
 \paragraph{}Las \glsplural{pipeline} pueden estar contenidas en el propio repositorio
 junto al código, lo cual traza una estrategia de infraestructura orientada al proyecto,
-o puede estar en un repositorio a parte de manera que pueda ser utilizada en común con
+o puede estar en un repositorio aparte de manera que pueda ser utilizada en común con
 otro proyecto.
 
 \paragraph{}Los \glsplural{pipeline} sólo definen las acciones a realizar en la infraestructura
@@ -135,10 +135,10 @@ en determinados eventos, pero la propia definición de la infraestructura tambi�
 estar definida en código. En nuestro proyecto, los repositorios están pensados para
 integrarse en una infraestructura \gls{IaaC} mediante Ansible\ref{sec:ansible}. En este
 proyecto, por su alcance, se han definido unos \emph{playbooks} o unidades de configuración,
-implementación y aprovisionamiento reutilizables, en las que deben ser lanzados de forma
+implementación y aprovisionamiento reutilizables, las que deben ser lanzadas de forma
 local. De esta forma, no habría mucha diferencia con un script normal, más haya de la
-sintaxis y el uso de ciertos módulos pre-integrados. En cambio, aplicado Ansible a toda
-la infraestructura podría facilitar la preparación de los equipos dónde se a desarrollar
+sintaxis y el uso de ciertos módulos pre-integrados. En cambio, aplicando Ansible a toda
+la infraestructura podría facilitar la preparación de los equipos dónde se va desarrollar
 los diferentes entornos, así como las máquinas donde se van a procesar los entornos.
 
 \paragraph{}Con Ansible, por ejemplo, sería muy fácil crear dispositivos nuevos para
@@ -147,7 +147,7 @@ automática los \emph{playbooks} necesarios en cada caso. Incluso si se realizar
 cambio de requisito y/o entorno, con Ansible podría administrarse todos los equipos,
 por lotes y de forma automática y remota.
 
-\section{QA}
+\section{QA.}
 
 \paragraph{}Los mecanismos de infraestructura recomendados para cada entorno cambian.
 Como no hay muchas herramientas externas de yocto que permitan hacer un análisis más
@@ -155,10 +155,10 @@ avanzado del que hace el propio yocto al generarse, para ese entorno uno o vario
 que tengan un servicio de generación centralizado sería suficiente. Incluso se podría
 tener un entorno de pre-producción y comprobar la integración hardware como parte del
 proceso de \emph{quality assurance}. Los nodos de generación automática podrían utilizar
-Jenkins para esta tarea, o bien un alternativa sería utilizar los recursos de GitHub
+Jenkins para esta tarea, o bien una alternativa sería utilizar los recursos de GitHub
 Actions. Quizás el factor más importante en este caso sería si esta parte de la
-infraestructura se quiere hacer el could o \gls{on-premises}. En ambos casos, se
-describiría la una \gls{pipeline} en un archivo específico en el propio repositorio de
+infraestructura se quiere hacer en could o \gls{on-premises}. En ambos casos, se
+describiría cada \gls{pipeline} en un archivo específico en el propio repositorio de
 código.
 
 \begin{figure}[H]
@@ -168,7 +168,7 @@ código.
     \label{imgs:sonarqube}
 \end{figure}
 
-\paragraph{}El entorno Flutter admite más variaciones en cuanto a el uso de infraestructura
+\paragraph{}El entorno Flutter admite más variaciones en cuanto al uso de infraestructura
 para gestionar el \emph{quality assurance}. Puede haber nodos de compilación automática,
 pero también nodos de análisis de código y ejecución de test. Por ejemplo, se puede
 utilizar una instancia de Sonarqube, para obtener resultados acerca de la calidad y del
@@ -178,7 +178,7 @@ código, abarcando desde el uso del \gls{coding standard} hasta la deteción de 
 automatizar, así además de medios, para garantizar una buena calidad se necesitan
 trabajadores cualificados para dicha tarea.
 
-\section{Entrega continua}
+\section{Entrega continua.}
 
 \paragraph{}Hay varias soluciones comerciales que se integran con Yocto para realizar
 la entrega continua, tanto para la actualización de la aplicación Flutter dentro del
@@ -206,7 +206,7 @@ es necesario contar con determinadas características del hardware.
 \paragraph{}En nuestro caso, al basarnos en un hardware Raspberry Pi, dependemos del
 modelo para encontrar casos de éxito basados en hipervisores. Entonces el enfoque con
 más sentido sería crear una partición de rescate autoarrancable de solo lectura y que
-permitiera actualiar la otra partición. Este mecanismo habría que diseñarlo y desarrollarlo
+permitiera actualizar la otra partición. Este mecanismo habría que diseñarlo y desarrollarlo
 en Yocto.
 
 %las referencias a artículos se ponen con \cite,

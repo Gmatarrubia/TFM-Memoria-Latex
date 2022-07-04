@@ -5,7 +5,7 @@ mostrado en el capítulo \ref{sec:GuiaDeUso}, con el diseño software y la arqui
 la aplicación meteorológica del capítulo \ref{sec:AplicacionMeteorologica}. Lo haremos
 explicando cómo hemos desarrollado varias tareas.
 
-\section{Planificación del Sprint y tablón Kanban}
+\section{Planificación del Sprint y tablón Kanban.}
 
 \paragraph{}Como en cualquier desarrollo lo primero es planificar. A continuación se
 muestran unas tablas Kanban con las tareas del sprint que vamos a explicar cómo se
@@ -40,7 +40,7 @@ y a documentar el proceso.
 
 \section{Generación de imagen de disco con características de debug y prueba en hardware.}
 
-\paragraph{}Esta prueba consiste en probar las características de debug en la
+\paragraph{}Esta prueba consiste en comprobar las características de debug en la
 Raspberrry Pi, dichas características incluyen paquetes y configuraciones que no deben
 estar presentes en producción pero que representan una ventaja a la hora de depurar.
 Para esta prueba sólo vamos a necesitar el entorno de Yocto.
@@ -124,7 +124,7 @@ sentencias:
 suponiendo que la tarjeta es detectada como el dispositivo ``/dev/sdb'', realizamos
 las siguientes operaciones:
 
-\paragraph{}\textbf{Nota:} Mira bien qué dispositivo asigna tu ordenador a la tarjeta
+\paragraph{}\textbf{Nota:} Comprueba cual es el dispositivo que asigna tu ordenador a la tarjeta
 de memoria, usar un dispositivo incorrecto podría conllevar la pérdida de datos
 importantes.
 
@@ -153,7 +153,7 @@ abrir una sesión ssh con el usuario ``root'' sin contraseña con:
 \section{Adecuación de la hora al huso horario de la localización.}
 
 \paragraph{}Vamos a mezclar todos los entornos para esta tarea, desarrollando, probando
-el local y en hardware. Lo primero es ir al entorno de desarrollo Yocto. Una vez allí,
+en local y el hardware. Lo primero es ir al entorno de desarrollo Yocto. Una vez allí,
 abrir una terminal y realizar las siguientes operaciones:
 
 \begin{lstlisting}[style=consola, numbers=left]
@@ -183,7 +183,7 @@ descargadas y el entorno preparado, podremos empezar a desarrollar.
 \end{figure}
 
 \paragraph{}Cómo podemos ver en la imágen \ref{imgs:diff-code} se han realizado algunos
-cambios en el código. Y la imagen muestra la comparativa entre del archivo antes y después
+cambios en el código. Y la imagen muestra la comparativa entre del archivo de antes y de después
 de los cambios.
 
 \paragraph{}Iremos compilando y depurando como es habitual en el desarrollo de cualquier

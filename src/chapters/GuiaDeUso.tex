@@ -1,21 +1,21 @@
 \chapter{Guía de Uso.}\label{sec:GuiaDeUso}
 
 \paragraph{}En este capítulo se van a explicar las principales funciones del entorno de
-desarrollo, así como las principales opciones de cada herramienta provista a los
+desarrollo, así como las principales opciones de cada herramienta provista para los
 desarrolladores.
 
-\section{Consideraciones previas}
+\section{Consideraciones previas.}
 
 \paragraph{}Todos los pasos de todas las guías de este capítulo podrán ser seguidas si
 previamente se han seguido las indicaciones del cápitulo \ref{sec:ManualDeInstalacion}.
 
 \paragraph{}Al igual que en el capítulo anterior \ref{sec:ManualDeInstalacion}, la guía
 de uso estará dividida en: entorno de desarrollo Flutter y entorno de desarrollo Yocto.
-Esta separación lógica, tiene sentillo ya que ambas partes pueden funcionar tanto por
-separado como juntas. Y ambas partes pueden ser utilizadas para propositos distintos
+Esta separación lógica, tiene sentido ya que ambas partes pueden funcionar tanto por
+separado como juntas. Y ambas partes pueden ser utilizadas para propósitos distintos
 que el de funcionar juntas.
 
-\section{Entorno de desarrollo Flutter}
+\section{Entorno de desarrollo Flutter.}
 
 \paragraph{}Una vez instalado, el uso del entorno Flutter no deja de ser indéntico a
 cómo se usa habitualmente Visual Studio Code para el desarrollo de Flutter. Por ello,
@@ -26,7 +26,7 @@ siguiente enlace:
 \paragraph{}\href{https://esflutter.dev/docs/development/tools/vs-code}
 {Guía oficial de desarrollo de Flutter en Vscode}
 
-\subsection{Características Principales}
+\subsection{Características Principales.}
 
 \begin{itemize}
     \item Compatibilidad con la mayoría de sistemas operativos.
@@ -52,7 +52,7 @@ emergente que nos aparece al abrir la carpeta de trabajo.
 
 \paragraph{}En caso de que se haya optado por trabajar desde el entorno \emph{Dockerizado}
 sólo habrá posibilidad de realizar las siguientes acciones: compilar, ejecutar la aplicación,
-lanzar los test y depurar con las opciones del servidor de depueración a través del navegador.
+lanzar los test y depurar con las opciones del servidor de depuración a través del navegador.
 Todas estas acciones salvo la última se realizan por línea de comandos. La depuración,
 será limitada y para acceder a ella, debemos abrir en el navegador la IP indicada.
 
@@ -83,7 +83,7 @@ para visualizar la aplicación.
 
 \paragraph{}A continuación se muestran las acciones provistas por el entorno de desarrollo.
 
-\subsection{Build}
+\subsection{Build.}
 
 \paragraph{}Para compilar la aplicación se puede utilizar el siguiente comando por
 terminal:
@@ -98,7 +98,7 @@ terminal:
 el argumento de \emph{debug}. El argumento \emph{test}, se utilizará para compilar y
 ejecutar los test. Este argumento invalida al anterior.
 
-\subsection{Ejecutar la app}
+\subsection{Ejecutar la app.}
 
 \paragraph{}Este comando nos permite ejecutar la aplicación desde una terminal.
 
@@ -108,11 +108,11 @@ ejecutar los test. Este argumento invalida al anterior.
 \end{lstlisting}
 
 \paragraph{}Los argumentos que admite este comando son: \gls{debug} y \gls{release}.
-Qué se corresponden con los modos de ejecución de la aplicación. En caso de querer
-ejecutar la y que ésta no haya sido compilada previamente se compilará con el modo
-correspondiente antes de ser ejecuta. Por defecto, la app se ejecuta en modo \gls{release}.
+Ambos se corresponden con los modos de ejecución de la aplicación. En caso de querer
+ejecutarla y que ésta no haya sido compilada previamente se compilará con el modo
+correspondiente antes de ser ejecutada. Por defecto, la app se ejecuta en modo \gls{release}.
 
-\subsection{Limpiar repo}
+\subsection{Limpiar repo.}
 
 \paragraph{}Con este comando limpiaremos todos los archivos que habían sido generados
 automáticamente.
@@ -123,16 +123,16 @@ automáticamente.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Entorno de desarrollo Yocto}
+\section{Entorno de desarrollo Yocto.}
 
 \paragraph{}Este es el entorno de desarrollo de la distribución FlutterPI. Una distribución
-con el kernel de linux para Raspberry Pi basada en poky (yocto) la cuál está pensada
+con el kernel de linux para Raspberry Pi basada en Poky (Yocto) la cuál está pensada
 para correr aplicaciones de Flutter. Esto es muy útil para múltiples aplicaciones como
 por ejemplo: Máquinas de vending, paneles de información, y muchísimos otros tipos de
-HMIs. Este entorno de desarrollo te permite tomarlo de plantilla y desarrollar rápidamente
+HMIs. Este entorno de desarrollo permite tomarlo de plantilla y desarrollar rápidamente
 un sistema HMI, fiable, replicable y altamente personalizable.
 
-\subsection{Características principales}
+\subsection{Características principales.}
 
 \paragraph{}Este entorno ha sido diseñado teniendo en cuanta los siguiente aspectos:
 
@@ -158,7 +158,7 @@ Para el resto de sistemas utilizar cualquiera de los métodos alternativos:
 \ref{sec:ManualDeInstalacion} antes de intentar los procedimientos descritos en este
 capítulo.
 
-\subsection{Build}
+\subsection{Build.}
 
 \paragraph{}Para lanzar la generación de la imagen completa con las configuraciones por
 defecto utilizar el siguiente comando. El resultado será una imagen arrancable en una
@@ -193,7 +193,7 @@ consultados con el comando:
     -h | --help) Prints this useful help :)
 \end{lstlisting}
 
-\subsection{Comando de build personalizados}
+\subsection{Comando de build personalizados.}
 
 \paragraph{}Mediante los argumentos -bc <"custom command"> o --bc <"custom command">,
 se puede pasar un comando personalizado al entorno de Yocto. Ésto es especialmente útil
@@ -211,7 +211,7 @@ hacerse una mejor idea de los usos que puede tener, se presentan unos ejemplos:
     $ ./build.sh --bitbake-cmd "bitbake-layers show-layers"
 \end{lstlisting}
 
-\subsection{Lanzar el modo Sesión Interactiva}
+\subsection{Lanzar el modo Sesión Interactiva.}
 
 \paragraph{}Esta es una manera potente de depurar y desarrollar tus recipes o tus
 aplicaciones flutter. Ya que abres una terminal en la que puedes lanzar comandos como
@@ -230,7 +230,7 @@ los anteriores de manera interactiva e iterativa. También da acceso a usar el \
     \item devtool
 \end{itemize}
 
-\subsection{Limpieza}
+\subsection{Limpieza.}
 
 \paragraph{}Se proveé del siguiente comando para borrar la mayoría de los archivos generados
 automáticamente.

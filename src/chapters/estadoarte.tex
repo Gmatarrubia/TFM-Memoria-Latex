@@ -1,13 +1,13 @@
-\chapter{Estado del arte}\label{sec:estadodelarte}
+\chapter{Estado del arte.}\label{sec:estadodelarte}
 
-\paragraph{}En este capítulo se va a tratar sobre el estado actual de las tecnologías
+\paragraph{}En este capítulo se va a tratar el estado actual de las tecnologías
 más relevantes para llevar a cabo entornos de desarrollo replicables, flexibles y universales.
-Explicaremos que aspectos son los más interesantes en cada caso y cómo podrían aplicarse.
+Explicaremos qué aspectos son los más interesantes en cada caso y cómo podrían aplicarse.
 
 \section{Yocto Project.}\label{sec:yocto}
 
 \paragraph{} \emph{Yocto Project} es un proyecto colaborativo y de código abierto
-de la \emph{Linux Foundation} cuyo objetivo principal es la de producir herramientas y
+de la \emph{Linux Foundation} cuyo objetivo principal es el de producir herramientas y
 procesos que permitan crear distribuciones embebidas de sistemas operativos basados
 en el Kernel de Linux. Su código está pensado para que las herramientas y las distribuciones
 generadas sean agnósticas respecto de la arquitectura del microprocesador así como del
@@ -22,26 +22,26 @@ resto del hardware.
 \end{figure}
 
 \paragraph{} Yocto es, por tanto, una excelente herramienta para asegurar la repetibilidad
-de los sistemas, así como para asegurar la seguridad de los mismos, además de ser capaz
-de ser flexible y parametrizable. Decimos que es bueno para asegurar la repetibilidad
+de los sistemas, así como para garantizar la seguridad de los mismos, además de ser
+flexible y parametrizable. Decimos que es bueno para asegurar la repetibilidad
 ya que la empresa toma posesión del sistema operativo entero y deja de depender de
-distribuciones de terceros que puedan introducir cambios sin previo aviso. Asegura la
+distribuciones de terceros que puedan introducir cambios sin previo aviso. Garantiza la
 seguridad ya que tiene un gran soporte de la comunidad \emph{\gls{open source}} cercana
 al desarrollo del propio kernel de Linux, proporcionando rápidamente los últimos parches
 de seguridad que se publican. Es flexible ya que permite adaptar cualquier cambio
 introducido en el hardware, manteniendo antiguas versiones o incluso desarrollar más de
 un hardware al mismo tiempo. Esto es un gran ventaja en los tiempos en los que los equipos
 de software deben empezar su código sin tener un sistema hardware final, donde incluso
-se desarrolle parte del hardware es dispositivos basado en \emph{\gls{FPGAs}} o en
+se desarrolle parte del hardware en dispositivos basados en \emph{\gls{FPGAs}} o en
 hardware simulado.
 
-\paragraph{} Este proyecto que fue fundado en 2010 con el apoyo de grandes multinacionales
-y organizaciones. Destaca la estrecha colaboracioón con \emph{OpenEmbedded}, tomando de
+\paragraph{} Este proyecto fue fundado en 2010 con el apoyo de grandes multinacionales
+y organizaciones. Destaca la estrecha colaboración con \emph{OpenEmbedded}, tomando de
 ellos la mayor parte del \emph{OpenEmbedded Project} y su motor de generación (\emph{build
 engine}), \textbf{bitbake}.
 
 \paragraph{} Como parte del proyecto, con cada versión de Yocto, se presenta una versión
-de Poky. Poky, es una distribuición de referencia, a partir de la cuál, realizar las
+de Poky. Poky, es una distribuición de referencia, a partir de la cuál, se realizan las
 modificaciones para la construción de una distribución propia.
 
 \begin{figure}[h]
@@ -52,39 +52,39 @@ modificaciones para la construción de una distribución propia.
 \end{figure}
 
 \paragraph{}Al principio, Yocto puede resultar ser conceptualmente difícil de entender
-ya que su campo de aplicación puede ser muy variado. En este sentido, puede usarse tanto
+ya que su campo de aplicación puede ser muy variado. En este sentido, puede usarse tanto para
 la creación de imágenes completas de sistema, creación de \emph{\glsplural{bootloader}}, generación
 de sistemas de ficheros (\emph{rootfs}), desarrollo de aplicativos, desarrollo de paquetes
-de los aplicativos, desarrollo y/o hacking del kernel, generación de  \emph{toolchains},
+de los aplicativos, desarrollo y/o hacking del kernel y generación de  \emph{toolchains},
 \glslink{SDK}{SDKs} o \glslink{ADT}{ADTs}.
 
 \paragraph{\label{layers} \label{recipes}}Los principales conceptos para enterder el
-funcionamiento de Yocto, son:
+funcionamiento de Yocto, son;
 las capas o \emph{layers}, las recetas o \emph{recipes}, las clases y los ficheros de
 configuración. Las \emph{recipes} son un conjunto de instrucciones y configuraciones
-usados para la construcción de un paquete. Por ejemplo, una recipe describe la fuente
-del código, los parámetros, el compilador, los parches a aplicar así como la instalación
-del paquete en la imagen. Las \emph{layers} son conjuntos de recipes agrupado por
-funciones lógicas que funcionan de manera independiente o con una dependencia bien
+usadas para la construcción de un paquete. Por ejemplo, una recipe describe la fuente
+del código, los parámetros, el compilador y los parches a aplicar así como la instalación
+del paquete en la imagen. Las \emph{layers} son conjuntos de recipes agrupadas por
+funciones lógicas que interactúan de manera independiente o con una dependencia bien
 documentada. Los ficheros de configuración suelen definir un conjunto de variables
 dependientes del entorno que queramos construir. Por último, las clases son partes de
 código común entre recetas pensadas para ser reutilizadas.
 
-\paragraph{}En cuanto a las opciones de testing, Yocto está dispone de test en tiempo
-de compilación así como la disposición de arrancar las imágenes generadas en una máquina
+\paragraph{}En cuanto a las opciones de testing, Yocto dispone de test en tiempo
+de compilación así como la posibilidad de arrancar las imágenes generadas en una máquina
 virtual QEMU \ref{sec:qemu}.
 
-\subsection{Kas}\label{sec:kas}
+\subsection{Kas.}\label{sec:kas}
 
 \paragraph{}Kas es una herramienta pensada para configurar proyectos basados en bitbake
 de una manera sencilla. Kas proveé un \emph{wrapper} de bitbake con comandos de más alto
 nivel. Resuelve las tareas de resolución de dependencias, de configuración y de
-generación que usualmente suelen hacerse a mano y dejarse documentados. Yocto
+generación que usualmente suelen hacerse a mano y dejarse documentadas. Yocto
 \ref{sec:yocto} utiliza bitbake como motor de generación, por tanto, Kas puede ser
-utilizado en proyectos basados en Yocto
+utilizado en proyectos basados en Yocto.
 \cite{kas}
 
-\section{QEMU}\label{sec:qemu}
+\section{QEMU.}\label{sec:qemu}
 
 \paragraph{}Qemu es un emulador de hardware de código abierto capaz de interoperar con
 \gls{KVM} para arrancar máquinas virtuales con un rendimiento casi nativo.
@@ -93,10 +93,10 @@ utilizado en proyectos basados en Yocto
 \paragraph{}Qemu dispone de los siguientes modos de funcionamiento:
 
 \begin{itemize}
-	\item User-mode emulation
-	\item System emulation
-	\item \gls{KVM} Hosting
-	\item Xen Hosting
+	\item User-mode emulation.
+	\item System emulation.
+	\item \gls{KVM} Hosting.
+	\item Xen Hosting.
 \end{itemize}
 
 \begin{figure}[h]
@@ -107,28 +107,28 @@ utilizado en proyectos basados en Yocto
 \end{figure}
 
 \paragraph{} El modo ``User-mode emulation'' permite que una sola aplicación compilada
-para una arquitectura diferente a la del resto del sistema arranque mediante la "traducción"
+para una arquitectura diferente a la del resto del sistema arranque mediante la ``traducción''
 de instrucciones en tiempo real.
 
 \paragraph{} El modo ``System emulation'' es el más común. Se utiliza para simular una
 computadora completa, incluidos sus periféricos. Qemu tiene la capacidad de albergar
-sistemas operativos linux, Solaris, Microsoft Windows, DOS y BSD.
+sistemas operativos Linux, Solaris, Microsoft Windows, DOS y BSD.
 
 \paragraph{} Los modos ``\gls{KVM}'' y ``\gls{XEN}'' son variaciones del modo ``System
-emulation'' en el que emulan más o menos hardware con cada uno de los hipervisores cuyo
+emulation'' en el que se simula más o menos hardware con cada uno de los hipervisores cuyo
 nombre coincide con el nombre del modo.
 
-\section{Docker}\label{sec:docker}
+\section{Docker.}\label{sec:docker}
 
 \paragraph{}Docker es una herramienta de gestión de contenedores. Dichos contenedores son
-una capa de aislamiento a nivel de aplicación, utilizan los recursos del Kernel de Linux
+una capa de aislamiento a nivel de aplicación que utilizan los recursos del Kernel de Linux
 tales como espacios de nombres. A pesar de que no supone un aislamiento tan fuerte como
 el que proporcionan las máquinas virtuales, la principal ventaja de los contenedores es
 que son mucho más livianos en cuanto a la necesidad de recursos de memoria, disco y computación.
 \cite{docker}
 
 \paragraph{} Docker permite empaquetar aplicaciones y todas sus dependencias, de esta
-forma tienen una gran capacidad de protabilidad y flexibilidad con respecto al sistema
+forma tienen una gran capacidad de portabilidad y flexibilidad con respecto al sistema
 operativo dónde se ejecuten.
 
 \begin{figure}[H]
@@ -144,7 +144,7 @@ evitar la heterogeneidad entre los entornos de desarrollo de los diferentes desa
 así como tener un control de versiones de las propias dependencias y de las variables
 de entorno del sistema.
 
-\section{Flutter}\label{sec:flutter}
+\section{Flutter.}\label{sec:flutter}
 
 \paragraph{} Flutter es un entorno de desarrollo o \gls{SDK} de aplicaciones. El principal
 objetivo de Flutter es facilitar la creación de interfaces de usuario que se adapten a
@@ -153,7 +153,7 @@ código fuente común se puedan generar aplicaciones para muchos entornos: Andro
 Linux, Windows, Fucsia, etc.
 \cite{flutter}
 
-\paragraph{} Sigue la filosofía de programación basada en objetos, y como está pensado
+\paragraph{} Flutter sigue la filosofía de programación basada en objetos, y como está pensado
 fundamentalmente para entornos gráficos, todos los objetos en Flutter son \gls{Widgets}.
 
 \begin{figure}[h]
@@ -172,17 +172,17 @@ entornos embebidos.
 \paragraph{} Está escrito en el lenguaje de programación Dart \ref{sec:dart} y ha sido
 desarrollado por Google.
 
-\subsection{Dart}\label{sec:dart}
+\subsection{Dart.}\label{sec:dart}
 
 \paragraph{}Dart es un lenguaje de programación orientado a objetos de alto nivel.
 Está optimizado para interfaces de usuario y para aumentar la productividad de desarrollo,
-ya que permite el ``hot debugging'', una técnica que permite cambiar sólo los objetos cuyo
+ya que permite el ``hot debugging''. Una técnica que posibilita cambiar sólo los objetos cuyo
 codigo ha sido actualizado, manteniendo el resto en mitad de una sesión de depuración.
 \cite{dart}
 
-\paragraph{}Permite compilarse en código máquina para tener un rendimiento similar al
-de aplicaciones nativas o traducirse a otros lenguajes considerador nativos en sus campos
-como por ejemplo a JavaScript para su uso en entornos web. Todo eso lo convierte en un
+\paragraph{}Dart permite compilarse en código máquina para tener un rendimiento similar al
+de aplicaciones nativas o traducirse a otros lenguajes considerados nativos en sus campos
+como por ejemplo JavaScript para su uso en entornos web. Todo eso lo convierte en un
 lenguaje de programación multiparadigma que permite el desarrollo tanto del \gls{front-end}
 como del \gls{back-end}.
 
@@ -193,16 +193,16 @@ como del \gls{back-end}.
 	\label{fig:dart}
 \end{figure}
 
-\section{Qt}\label{sec:Qt}
+\section{Qt.}\label{sec:Qt}
 
 \paragraph{}Qt es un \gls{framework} the interfaces de usuario muy popular y extendido,
 se utiliza, fundamentalmente, en sistemas embebidos de cualquier ámbito, desde impresoras
 hasta sistemas de armamento. Esto es así porque dispone de \glsplural{API} en C++ y en
-python y ofrece una gran calidad de recursos gráficos y de herramientas. Por ejemplo,
-su \gls{IDE} qtCreator facilita muchísimo el desarrollo. Ofrece licencias gratuitas para
+Python y ofrece una gran calidad de recursos gráficos y de herramientas. Por ejemplo,
+su \gls{IDE} qtCreator facilita muchísimo el desarrollo, ofrece licencias gratuitas para
 programas de código abierto, y está muy bien documentada.
 
-\paragraph{}Hasta hace unos años a sido el framework rey de los sistemas embebidos, pero
+\paragraph{}Hasta hace unos años ha sido el framework rey de los sistemas embebidos, pero
 con la reciente llegada de \hyperref[sec:flutter]{Flutter} \ref{sec:flutter} a entornos
 de escritorio y distribuciones embebidas, puede suponer un cambio de tendencia.
 
@@ -214,7 +214,7 @@ de escritorio y distribuciones embebidas, puede suponer un cambio de tendencia.
 \end{figure}
 
 
-\section{React Native}\label{sec:react}
+\section{React Native.}\label{sec:react}
 
 \paragraph{}React Native es una librería basada en la librería React que a diferencia
 de ésta, la compilación genera una aplicación nativa para sistemas iOS o Android. Al
@@ -234,11 +234,11 @@ embebidos.
 	\label{fig:react}
 \end{figure}
 
-\section{Vagrant}\label{sec:vagrant}
+\section{Vagrant.}\label{sec:vagrant}
 
 \paragraph{}Vagrant es un gestor de máquinas virtuales propiedad de HashiCorp que automatiza
 su creación y proporciona una interfaz de alto nivel para su gestión, funciona con máquinas
-virtuales de VMWare, VirtualBox, AWS, etc. El propósito fundamental de Vagrant es la de
+virtuales de VMWare, VirtualBox, AWS, etc. El propósito fundamental de Vagrant es el de
 replicar los entornos de ejecución y de desarrollo de forma automática, y que las pruebas
 y el desarrollo sean lo más fieles a los entornos de producción de una manera sencilla.
 
@@ -247,7 +247,7 @@ sólo que en este caso se administran máquinas virtuales en vez de containers. 
 la popularidad de docker ha hecho que Vagrant haya quedado en segundo plano. Otra razón,
 por la que Vagrant no ha terminado de ser muy popular es la dependencia con tecnologías
 externas de máquinas virtuales, muchas de ellas con necesidad de licencias comerciales,
-así como el uso de hypervisores.
+así como el uso de hipervisores.
 
 \begin{figure}[H]
 	\centering
@@ -256,30 +256,30 @@ así como el uso de hypervisores.
 	\label{fig:vagrant}
 \end{figure}
 
-\section{Ansible}\label{sec:ansible}
+\section{Ansible.}\label{sec:ansible}
 
 \paragraph{}Aunque Ansible es confundido muchas veces con \hyperref[sec:docker]{Docker} \ref{sec:docker}
-o con \hyperref[sec:vagrant]{Vagrant} \ref{sec:vagrant} resulta ser una tecnología
+o con \hyperref[sec:vagrant]{Vagrant} \ref{sec:vagrant} aunque resulta ser una tecnología
 totalmente diferente. Ansible es una plataforma de software libre para la administración
 de equipos. Permite la administración multi-nodo de forma remota y por lotes. Mediante
 un equipo orquestador, se puede automatizar el resto de nodos. Se basa en colecciones
 de libros de jugadas o \emph{playbooks}.
 
 \paragraph{}Una de las características principales de Ansible es que no tiene ninguna
-dependencia salvo la de Python, la cual es una dependencia asumible ya que la mayoría
-de distribuciones linux trae Python por defecto.
+dependencia salvo la de Python, la cual es asumible ya que la mayoría
+de distribuciones Linux trae Python por defecto.
 
 \paragraph{}En nuestro caso, el entorno de desarrollo traerá los playbooks necesarios
 para la instalación de las dependencias. Están escritos en playbooks en vez de en scritps
 corrientes para poder integrarse en sistemas remotos de administración fácilmente. Desde
-el punto de vista de operacione, Ansible resulta muy conveniente para pasar la configuración
+el punto de vista de operaciones, Ansible resulta muy conveniente para pasar la configuración
 de los entornos de desarrollo como \gls{IaaC} y por tanto usar control de versiones para
 la adminsitración y configuración de equipos. En un entorno empresarial real, estos
 playbooks posiblemente estarían en un repositorio distinto y se ejecutarían con permisos
 de administrador automáticamente, evitando que el usuario necesite el acceso de superusuario.
 
 \paragraph{}Podríamos comparar Ansible con herramientas de Microsoft de gestión remota,
-aunque ésto no supone una barrera para que ansible se integré con herramientas de Microsoft
+aunque ésto no supone una barrera para que ansible se integre con herramientas de Microsoft
 como \emph{Active Directory}.
 
 \begin{figure}[H]
@@ -289,7 +289,7 @@ como \emph{Active Directory}.
 	\label{fig:ansible}
 \end{figure}
 
-\section{Visual Studio Code}\label{sec:vscode}
+\section{Visual Studio Code.}\label{sec:vscode}
 
 \paragraph{}Visual Studio Code o VSCode abreviadamente es un \glslink{IDE}{IDE} multiplataforma
 de código abierto desarrollado por Microsoft. Es un \glslink{IDE}{IDE} ligero y modular
@@ -299,7 +299,7 @@ la instalación de \gls{plugins}.
 \paragraph{}VSCode se puede personalizar completamente al uso requerido en cada caso,
 mediante archivos que añaden funcionalidad al \glslink{IDE}{IDE} en tiempo de ejecución
 y dependiendo del proyecto abierto. Por ejemplo, un repositorio de Yocto, podría tener unos
-fichero que definieran las tareas más comunes para la generación de Yocto.
+ficheros que definieran las tareas más comunes para la generación de Yocto.
 
 \begin{figure}[H]
 	\centering
@@ -311,12 +311,12 @@ fichero que definieran las tareas más comunes para la generación de Yocto.
 \paragraph{}En muchas ocasiones Visual Studio Code resulta un programa muy conveniente
 para su uso como editor básico de texto, al poder tener disponibles todas las características
 avanzadas de edición, propias de los programas de edición de código. En el que además,
-tenemos una disposición de ventanas manejable con una o más terminales disponible.
+tenemos una disposición de ventanas manejable con una o más terminales disponibles.
 
 \paragraph{}Por ejemplo, para el desarrollo de Yocto puede ser utilizado cualquier editor
-de texto, desde gedit hasta vim, más cualquier programa de terminal para lanzar los
-comandos y probar nuestros cambios. En cambio, tener ambas cosas organizadas en la misma
-vista, pudiendo tener un arbol de ficheros y varios ficheros abierto organizados en pestañas
+de texto, desde gedit hasta vim en conjunto con cualquier programa de terminal para lanzar los
+comandos y probar nuestros cambios. Sin embargo, tener ambas cosas organizadas en la misma
+vista, pudiendo tener un árbol de ficheros y varios ficheros abiertos organizados en pestañas
 hace que el desarrollo sea más cómodo.
 
 
@@ -327,8 +327,9 @@ hace que el desarrollo sea más cómodo.
 	\label{fig:vscode-perpective}
 \end{figure}
 
-\paragraph{}Por su soporte por integración con Flutter y las razones descritas, hacen
-de Visual Studio Code el editor perfecto para ambos entornos de desarrollo.
+\paragraph{}Por su soporte, por su integración con Flutter y todas las razones descritas
+anteriormente, hacen de Visual Studio Code el editor perfecto para los entornos de desarrollo
+de Flutter y Yocto.
 
 %las referencias a artículos se ponen con \cite,
 %las referencias a glosario \gls,

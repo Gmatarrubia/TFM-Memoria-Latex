@@ -6,9 +6,9 @@ desarrolladores como nuestros clientes o usuarios, podemos aplicar técnicas de 
 de sus necesidades tales como \textit{Customer Personas} (figura \ref{fig:customer_persona})
 o Mapas de Empatía (figura \ref{fig:mapa_empatia}). Estás técnicas son muy comunes
 dentro de departamentos de Marketing, su uso garantiza que el diseño del producto se
-hará entorno a las necesidades de los clientes, en este caso, del entorno de desarrollo
+ejecute entorno a las necesidades de los clientes, en este caso, del entorno de desarrollo
 y los propios desarrolladores. En nuestra versión, vamos a agrupar a los usuarios por
-\textit{expertise} y vamos a definir necesidades para equipos.
+\textit{expertise} y vamos a definir necesidades para los equipos.
 
 \begin{figure}[ht]
     \centering
@@ -24,7 +24,7 @@ y los propios desarrolladores. En nuestra versión, vamos a agrupar a los usuari
     \label{fig:mapa_empatia}
 \end{figure}
 
-\section{Equipo de desarrollo de software de sistema}\label{sec:systemteam}
+\section{Equipo de desarrollo de software de sistema.}\label{sec:systemteam}
 
 \paragraph{}La gran mayoría de productos de \gls{IoT} basados en microprocesadores,
 tienen un sistema operativo sobre el cual se ejecutan las aplicaciones, servicios o
@@ -33,7 +33,7 @@ este sistema operativo. Los principales aspectos que deben tener en cuenta son:
 
 \begin{itemize}
     \item Proveer del compilador, la toolchain y del \gls{SDK}.
-    \item Proveer de las librerías necesarias para la ejecución de la aplicaciones o
+    \item Proveer de las librerías necesarias para la ejecución de las aplicaciones o
     servicios.
     \item Velar por la estabilidad del sistema.
     \item Asegurar la ciberseguridad del dispositivo.
@@ -52,17 +52,17 @@ para este equipo serán:
     \item Uso de la consola o \gls{shell}.
     \item Lenguaje de programación Bash, para el desarrollo de \gls{scripts} que se
     ejecutan en la consola.
-    \item Lenguaje de programación Python, para el desarrollo de \gls{scripts} más complejos.
-    \item Programa de edición de texto para la edición de los ficheros, será recomendable
+    \item Lenguaje de programación Python para el desarrollo de \gls{scripts} más complejos.
+    \item Programa de edición de texto para la edición de los ficheros. Será recomendable
     el uso de \hyperref[sec:vscode]{Visual Studio Code} como \gls{IDE}.
 \end{itemize}
 
-\section{Equipo de desarrollado de aplicaciones UI/UX}\label{sec:uiteam}
+\section{Equipo de desarrollo de aplicaciones UI/UX.}\label{sec:uiteam}
 
 \paragraph{}El equipo de \gls{UI/UX} se dedica como su propio nombre indica a la interfaz
 de usuario y a la interacción con la misma. Dicho de otra manera, el equipo de \gls{UI/UX}
-están a cargo del desarrollo del \gls{front-end}. Su objetivo es crear una interfaz
-alineada con las necesidades del usuario medio al que destinada, así como, generar una
+está a cargo del desarrollo del \gls{front-end}. Su objetivo es crear una interfaz
+alineada con las necesidades del usuario medio al que va destinada, así como, generar una
 experiencia adecuada de uso. Es importante que la interfaz represente los objetivos de
 negocio, ya que es la principal conexión con el usuario y por tanto la mayor fuente de
 percepción de información y de imagen de marca.
@@ -76,7 +76,7 @@ lógica de los servicios, permitiendo así la autogestión de los equipos de des
 Sin embargo, para las labores de testing en frecuente necesitar ambas partes para
 comprobar que la interfaz se comporta de manera coherente con la lógica. Por eso, el
 entorno de desarrollo debe permitir el desarrollo de manera independiente de la interfaz
-y la ejecución de ambas maneras, tanto independiente en conjunto con el \gls{back-end}.
+y la ejecución de ambas maneras, tanto independientemente como en conjunto con el \gls{back-end}.
 
 \paragraph{}Los principales aspectos que deben tener en cuenta son:
 
@@ -93,7 +93,7 @@ para este equipo serán:
     \item Lenguaje de programación Flutter/Dart.
 \end{itemize}
 
-\section{Equipo de desarrollo de servicios de aplicaciones}
+\section{Equipo de desarrollo de servicios de aplicaciones.}
 
 \paragraph{}También conocido como el equipo de \gls{back-end} es el encargado de programar
 la lógica del programa y además suelen programar la comunicación con dispositivos externos,
@@ -130,7 +130,7 @@ para este equipo serán:
     \item Lenguaje de programación Flutter/Dart.
 \end{itemize}
 
-\section{Equipo de tools, integración y distribución DevOps}
+\section{Equipo de tools, integración y distribución DevOps.}
 
 \paragraph{}Los roles de este equipo suelen estar repartidos o diluidos en el resto de
 equipos, especialmente en el equipo de desarrollo de software de sistema ya que comparten
@@ -161,14 +161,14 @@ para este equipo serán:
     \item Desarrollo de \emph{playbooks} de \hyperref[sec:ansible]{ansible}.
 \end{itemize}
 
-\section{Equipo de testing y QA}\label{sec:testingqa}
+\section{Equipo de testing y QA.}\label{sec:testingqa}
 
 \paragraph{}Aunque puede ser un equipo que no se entienda como imprescindible por gestores
 de proyecto o managers ajenos al mundo del softwere, no puede ser visión más ajena a
 la realidad. Un equipo de testing y QA puede llegar a acortar mucho los plazos de entrega,
 mejorar la ciberseguridad y detectar errores que arruinan la experiencia de usuario,
 en definitiva, ahorrar mucho dinero al proyecto. Este equipo es el encargado de visualizar
-las métricas de calidad y mantenerlas dentro de un humbral marcado. Suele desarrollar
+las métricas de calidad y mantenerlas dentro del umbral marcado. Suele desarrollar
 la parte del entorno y la arquitectura de las pruebas, suelen desarrollar los test de
 integración y/o sistema y, a veces, también los test unitarios.
 
